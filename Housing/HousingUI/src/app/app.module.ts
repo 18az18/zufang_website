@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,7 @@ import { ReservationComponent } from './components/pages/reservation/reservation
 import { ContactComponent } from './components/pages/contact/contact.component';
 import { RoomlayoutComponent } from './components/pages/roomlayout/roomlayout.component';
 import { MainpageComponent } from './components/mainpage/mainpage.component';
+import { ContactformComponent } from './components/contactform/contactform.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +23,14 @@ import { MainpageComponent } from './components/mainpage/mainpage.component';
     ReservationComponent,
     ContactComponent,
     RoomlayoutComponent,
-    MainpageComponent
+    MainpageComponent,
+    ContactformComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
