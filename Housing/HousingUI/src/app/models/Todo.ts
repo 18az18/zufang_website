@@ -1,7 +1,8 @@
-export class Todo{
-    id: number;
-    name?:string; // name is optional with the ?
-}
+export class Todo {
+    id:number;
+    title:string;
+    completed:boolean;
+  }
 
  
 // import { Todo } from ... to use it in other component file
