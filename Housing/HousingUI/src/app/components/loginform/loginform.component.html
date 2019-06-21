@@ -1,0 +1,36 @@
+<div>
+    <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+        <div>
+            <label>
+                User name
+                <input type="text" formControlName="userName" name="userName" required>
+                <!-- <div [hidden]="Name.valid || Name.pristine" class="alert alert-danger">
+                        Name is required
+                </div> -->
+                <!-- <div *ngIf="reservationForm.get('firstName').errors &&
+                          (reservationForm.get('firstName').touched) || reservationForm.get('firstName').dirty">
+                  <div *ngIf="reservationForm.get('firstName').errors?.required">
+                      First Name is required
+                  </div>
+                </div> -->
+            </label>
+        </div>
+        <div>
+            <label>
+                Password
+                <input type="text" formControlName="password" name="password" required>
+                <!-- <div [hidden]="Name.valid || Name.pristine" class="alert alert-danger">
+                        Name is required
+                </div> -->
+                <!-- <div *ngIf="reservationForm.get('lastName').errors &&
+                          (reservationForm.get('lastName').touched) || reservationForm.get('lastName').dirty">
+                  <div *ngIf="reservationForm.get('lastName').errors?.required">
+                      Last Name is required
+                  </div>
+                </div> -->
+            </label>
+        </div>
+        <button type="submit" [disabled]="!loginForm.valid">Submit</button>
+      </form>
+  </div>
+  

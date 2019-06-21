@@ -1,0 +1,119 @@
+<div>
+  <form (ngSubmit)="onSubmit()" [formGroup]="reservationForm">
+      <div>
+          <label>
+              First Name
+              <input type="text" formControlName="firstName" name="firstname" required>
+              <!-- <div [hidden]="Name.valid || Name.pristine" class="alert alert-danger">
+                      Name is required
+              </div> -->
+              <div *ngIf="reservationForm.get('firstName').errors &&
+                        (reservationForm.get('firstName').touched) || reservationForm.get('firstName').dirty">
+                <div *ngIf="reservationForm.get('firstName').errors?.required">
+                    First Name is required
+                </div>
+              </div>
+          </label>
+      </div>
+      <div>
+          <label>
+              Last Name
+              <input type="text" formControlName="lastName" name="lastname" required>
+              <!-- <div [hidden]="Name.valid || Name.pristine" class="alert alert-danger">
+                      Name is required
+              </div> -->
+              <div *ngIf="reservationForm.get('lastName').errors &&
+                        (reservationForm.get('lastName').touched) || reservationForm.get('lastName').dirty">
+                <div *ngIf="reservationForm.get('lastName').errors?.required">
+                    Last Name is required
+                </div>
+              </div>
+          </label>
+      </div>
+      <div>
+        <label>
+          Email
+          <input type="text" formControlName="email" name="email" required>
+          <!-- <div [hidden]="Email.valid || Email.pristine" class="alert alert-danger">
+                  Email is required
+          </div> -->
+          <div *ngIf="reservationForm.get('email').errors &&
+                    (reservationForm.get('email').touched) || reservationForm.get('email').dirty">
+            <div *ngIf="reservationForm.get('email').errors?.required">
+                Email is required
+            </div>
+            <div *ngIf="reservationForm.get('email').errors?.email">
+                Email is invalid
+            </div>
+          </div>
+        </label>
+      </div>
+      <div>
+          <label>
+            Phone
+              <input type="text" formControlName="phone" name="phone" required>
+              <!-- <div [hidden]="Name.valid || Name.pristine" class="alert alert-danger">
+                      Name is required
+              </div> -->
+              <div *ngIf="reservationForm.get('phone').errors &&
+                        (reservationForm.get('phone').touched) || reservationForm.get('phone').dirty">
+                <div *ngIf="reservationForm.get('phone').errors?.pattern">
+                    Phone number is invalid
+                </div>
+              </div>
+          </label>
+      </div>
+      <div>
+          <label>
+            Floor Selection
+            <select formControlName="floors" required>
+                <option [ngValue]="null">Choose an option</option>
+                <option *ngFor="let floor of floors; let i = index" [ngValue]="floor.id">
+                  {{floor.name}}
+                </option>
+            </select>
+              <!-- <div [hidden]="Name.valid || Name.pristine" class="alert alert-danger">
+                      Name is required
+              </div> -->
+              <div *ngIf="reservationForm.get('floors').errors &&
+                        (reservationForm.get('floors').touched) || reservationForm.get('floors').dirty">
+                <div *ngIf="reservationForm.get('floors').errors?.required">
+                    Please select your floor number
+                </div>
+              </div>
+          </label>
+      </div>
+
+      <div>
+        <label>
+          Room Selection
+          <select formControlName="rooms" required>
+              <option [ngValue]="null">Choose an option</option>
+              <option *ngFor="let room of rooms; let i = index" [ngValue]="room.id">
+                {{room.name}}
+              </option>
+          </select>
+            <!-- <div [hidden]="Name.valid || Name.pristine" class="alert alert-danger">
+                    Name is required
+            </div> -->
+            <div *ngIf="reservationForm.get('rooms').errors &&
+                      (reservationForm.get('rooms').touched) || reservationForm.get('rooms').dirty">
+              <div *ngIf="reservationForm.get('rooms').errors?.required">
+                  Please select your room number
+              </div>
+            </div>
+        </label>
+      </div>
+      <div>
+        <label>
+          Anything else you would like to add?
+          <input type="text" formControlName="message" name="message">
+          <!-- <div [hidden]="Message.valid || Message.pristine" class="alert alert-danger">
+                  Message is required
+          </div> -->
+        </label>
+      </div>
+
+      <button type="submit" [disabled]="!reservationForm.valid">Submit</button>
+    </form>
+</div>

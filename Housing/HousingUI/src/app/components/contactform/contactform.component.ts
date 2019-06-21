@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormService } from '../../services/form/form.service';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 @Component({
@@ -14,7 +13,7 @@ export class ContactformComponent implements OnInit {
   // email:string;
   // message:string;
 
-  constructor(private formService:FormService, private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder) { }
 
   ngOnInit() {
     this.contactForm = this.fb.group({

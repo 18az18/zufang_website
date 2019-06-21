@@ -5,8 +5,8 @@
   <p>I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story and let your users know a little more about you.</p>
   <h1>YOUR NEW HOME AWAITS.</h1>
   <form (ngSubmit)="onSubmit()" [formGroup]="contactForm">
-    <div class="form-group">
-      <input type="text" class="form-control" formControlName="name" name="name" placeholder="Name" required>
+    <div>
+      <input type="text" formControlName="name" name="name" placeholder="Name" required>
       <!-- <div [hidden]="Name.valid || Name.pristine" class="alert alert-danger">
               Name is required
       </div> -->
@@ -18,8 +18,8 @@
       </div>
       
     </div>
-    <div class="form-group">
-      <input type="text" class="form-control" formControlName="email" name="email" placeholder="Email" required>
+    <div>
+      <input type="text" formControlName="email" name="email" placeholder="Email" required>
       <!-- <div [hidden]="Email.valid || Email.pristine" class="alert alert-danger">
               Email is required
       </div> -->
@@ -33,8 +33,8 @@
         </div>
       </div>
     </div>
-    <div class="form-group">
-      <input type="text" class="form-control" formControlName="message" name="message" placeholder="Message" required>
+    <div>
+      <input type="text" formControlName="message" name="message" placeholder="Message" required>
       <!-- <div [hidden]="Message.valid || Message.pristine" class="alert alert-danger">
               Message is required
       </div> -->
