@@ -13,7 +13,14 @@ export class LoginIconComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.getUser();
+  }
 
+  getUser() {
+    this.loggedIn = !this.loggedIn;
+    // create service and call the get current user api request
+    // change loggedIn boolean accordingly
+    // store the loggedUser info accordindly for when user logout/user profile
   }
 
 }
