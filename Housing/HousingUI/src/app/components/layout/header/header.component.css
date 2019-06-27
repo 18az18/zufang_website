@@ -1,0 +1,19 @@
+h1{
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 4em;
+    margin-left:50px;
+    float: left;
+}
+.bar{
+    color: white;
+}
+nav{
+font-size: 2em; 
+color: white;
+}
+a
+{ 
+    color: white;
+    background-color: #20203B;
+}
