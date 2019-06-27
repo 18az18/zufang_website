@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-loginform',
@@ -8,23 +9,23 @@ import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 })
 export class LoginformComponent implements OnInit {
 
-  loginForm:FormGroup;
+  loginForm: FormGroup;
 
-
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb: FormBuilder, private userService: UserService) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
       userName: ['', Validators.required],
       password: ['', Validators.required]
-    })
+    });
   }
 
   onSubmit() {
-    console.log("trying to log in with");
-    console.log(this.loginForm.get("userName").value);
-    console.log("and")
-    console.log(this.loginForm.get("password").value);
+    console.log('trying to log in with');
+    console.log(this.loginForm.get('userName').value);
+    console.log('and');
+    console.log(this.loginForm.get('password').value);
+    this.userService.login();
   }
 
 }

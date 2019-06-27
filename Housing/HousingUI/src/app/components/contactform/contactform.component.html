@@ -1,46 +1,44 @@
 
 <div>
-  <h6>Luxury Condos</h6>
-  <h1>UStyle</h1>
-  <p>I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story and let your users know a little more about you.</p>
-  <h1>YOUR NEW HOME AWAITS.</h1>
+  <app-contactform-paragraph></app-contactform-paragraph>
   <form (ngSubmit)="onSubmit()" [formGroup]="contactForm">
     <div>
-      <input type="text" formControlName="name" name="name" placeholder="Name" required>
+      <input type="text" formControlName="name" placeholder="Name" required>
       <!-- <div [hidden]="Name.valid || Name.pristine" class="alert alert-danger">
               Name is required
       </div> -->
       <div *ngIf="contactForm.get('name').errors &&
                 (contactForm.get('name').touched) || contactForm.get('name').dirty">
-        <div *ngIf="contactForm.get('name').errors?.required">
+        <div *ngIf="!!contactForm.get('name').errors?.required">
             Name is required
         </div>
       </div>
-      
+
     </div>
     <div>
-      <input type="text" formControlName="email" name="email" placeholder="Email" required>
+      <input type="text" formControlName="email" placeholder="Email" required>
       <!-- <div [hidden]="Email.valid || Email.pristine" class="alert alert-danger">
               Email is required
       </div> -->
       <div *ngIf="contactForm.get('email').errors &&
                 (contactForm.get('email').touched) || contactForm.get('email').dirty">
-        <div *ngIf="contactForm.get('email').errors?.required">
+        <div *ngIf="!!contactForm.get('email').errors?.required">
             Email is required
         </div>
-        <div *ngIf="contactForm.get('email').errors?.email">
+        <div *ngIf="!!contactForm.get('email').errors?.email">
             Email is invalid
         </div>
       </div>
     </div>
     <div>
-      <input type="text" formControlName="message" name="message" placeholder="Message" required>
+      <textarea rows="6" formControlName="message" placeholder="Message" required>
       <!-- <div [hidden]="Message.valid || Message.pristine" class="alert alert-danger">
               Message is required
       </div> -->
+      </textarea>
       <div *ngIf="contactForm.get('message').errors &&
                 (contactForm.get('message').touched) || contactForm.get('message').dirty">
-        <div *ngIf="contactForm.get('message').errors?.required">
+        <div *ngIf="!!contactForm.get('message').errors?.required">
             Messages can not be empty
         </div>
       </div>

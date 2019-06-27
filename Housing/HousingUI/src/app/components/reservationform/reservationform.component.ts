@@ -9,11 +9,11 @@ import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 })
 export class ReservationformComponent implements OnInit {
 
-  reservationForm:FormGroup;
+  reservationForm: FormGroup;
   floors = [];
   rooms = [];
 
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.reservationForm = this.fb.group({
@@ -24,15 +24,15 @@ export class ReservationformComponent implements OnInit {
       floors: [null, Validators.required],
       rooms: [null, Validators.required],
       message: ['']
-    })
-  
+    });
+
     this.getFloor();
     this.getRoom();
-    
+    this.onChanges();
   }
 
   getFloor() {
-    this.floors = 
+    this.floors =
     [{ id: '1', name: 'floor 1' },
       { id: '2', name: 'floor 2' },
       { id: '3', name: 'floor 3' },
@@ -40,15 +40,28 @@ export class ReservationformComponent implements OnInit {
   }
 
   getRoom() {
-    this.rooms = 
+    this.rooms =
     [{ id: '1', name: 'Unit 1' },
       { id: '2', name: 'Unit 2' },
       { id: '3', name: 'Unit 3' },
       { id: '4', name: 'Unit 4' }];
   }
 
+  updateRoomList(floorNum: number) {
+    console.log(floorNum);
+  }
+
 
   onSubmit() {
     console.log(this.reservationForm);
+  }
+
+  onChanges(): void {
+    this.reservationForm.get('floors').valueChanges.subscribe((val) => {
+      console.log(val);
+      if (val !== null) {
+        this.updateRoomList(val);
+      }
+    });
   }
 }

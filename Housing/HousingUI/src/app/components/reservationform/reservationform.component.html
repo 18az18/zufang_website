@@ -9,7 +9,7 @@
               </div> -->
               <div *ngIf="reservationForm.get('firstName').errors &&
                         (reservationForm.get('firstName').touched) || reservationForm.get('firstName').dirty">
-                <div *ngIf="reservationForm.get('firstName').errors?.required">
+                <div *ngIf="!!reservationForm.get('firstName').errors?.required">
                     First Name is required
                 </div>
               </div>
@@ -24,7 +24,7 @@
               </div> -->
               <div *ngIf="reservationForm.get('lastName').errors &&
                         (reservationForm.get('lastName').touched) || reservationForm.get('lastName').dirty">
-                <div *ngIf="reservationForm.get('lastName').errors?.required">
+                <div *ngIf="!!reservationForm.get('lastName').errors?.required">
                     Last Name is required
                 </div>
               </div>
@@ -39,10 +39,10 @@
           </div> -->
           <div *ngIf="reservationForm.get('email').errors &&
                     (reservationForm.get('email').touched) || reservationForm.get('email').dirty">
-            <div *ngIf="reservationForm.get('email').errors?.required">
+            <div *ngIf="!!reservationForm.get('email').errors?.required">
                 Email is required
             </div>
-            <div *ngIf="reservationForm.get('email').errors?.email">
+            <div *ngIf="!!reservationForm.get('email').errors?.email">
                 Email is invalid
             </div>
           </div>
@@ -57,7 +57,7 @@
               </div> -->
               <div *ngIf="reservationForm.get('phone').errors &&
                         (reservationForm.get('phone').touched) || reservationForm.get('phone').dirty">
-                <div *ngIf="reservationForm.get('phone').errors?.pattern">
+                <div *ngIf="!!reservationForm.get('phone').errors?.pattern">
                     Phone number is invalid
                 </div>
               </div>
@@ -77,14 +77,14 @@
               </div> -->
               <div *ngIf="reservationForm.get('floors').errors &&
                         (reservationForm.get('floors').touched) || reservationForm.get('floors').dirty">
-                <div *ngIf="reservationForm.get('floors').errors?.required">
+                <div *ngIf="!!reservationForm.get('floors').errors?.required">
                     Please select your floor number
                 </div>
               </div>
           </label>
       </div>
 
-      <div>
+      <div [hidden]="reservationForm.get('floors').value == null">
         <label>
           Room Selection
           <select formControlName="rooms" required>
@@ -98,7 +98,7 @@
             </div> -->
             <div *ngIf="reservationForm.get('rooms').errors &&
                       (reservationForm.get('rooms').touched) || reservationForm.get('rooms').dirty">
-              <div *ngIf="reservationForm.get('rooms').errors?.required">
+              <div *ngIf="!!reservationForm.get('rooms').errors?.required">
                   Please select your room number
               </div>
             </div>
@@ -107,13 +107,14 @@
       <div>
         <label>
           Anything else you would like to add?
-          <input type="text" formControlName="message" name="message">
+          <textarea rows="6" formControlName="message" name="message">
           <!-- <div [hidden]="Message.valid || Message.pristine" class="alert alert-danger">
                   Message is required
           </div> -->
+          </textarea>
         </label>
       </div>
-
       <button type="submit" [disabled]="!reservationForm.valid">Submit</button>
     </form>
 </div>
+

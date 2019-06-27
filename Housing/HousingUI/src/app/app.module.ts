@@ -16,6 +16,7 @@ import { ReservationformComponent } from './components/reservationform/reservati
 import { LoginComponent } from './components/pages/login/login.component';
 import { LoginIconComponent } from './components/login-icon/login-icon.component';
 import { LoginformComponent } from './components/loginform/loginform.component';
+import { ContactformParagraphComponent } from './components/contactform-paragraph/contactform-paragraph.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { LoginformComponent } from './components/loginform/loginform.component';
     LoginComponent,
     LoginIconComponent,
     LoginformComponent,
+    ContactformParagraphComponent,
   ],
   imports: [
     BrowserModule,
