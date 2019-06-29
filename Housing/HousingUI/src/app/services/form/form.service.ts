@@ -18,12 +18,13 @@ export class FormService {
 
   // submit the contact us form to server
   submitContactForm(name: string, email: string, message: string): Observable<any> {
-    const url = '123';
+    const url = 'http://localhost:3000/';
     return this.http.post(url, {name, email, message}, httpOptions);
   }
 
   // submit the reservation form to server
   submitReservationForm(): Observable<any> {
+    const url = 'http://localhost:3000/';
     return ;
   }
 }

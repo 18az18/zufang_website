@@ -19,8 +19,13 @@ export class UserService {
   constructor(private router: Router, private http: HttpClient) { }
 
   login() {
+    const url = 'http://localhost:3000/';
     this.userUpdated.next(true);
     this.router.navigate(['']);
+  }
+
+  signup() {
+    const url = 'http://localhost:3000/';
   }
 
   // login(username: string, password: string) {
@@ -29,6 +34,7 @@ export class UserService {
   // }
 
   logout() {
+    const url = 'http://localhost:3000/';
     this.userUpdated.next(false);
     if (this.router.url === 'signin') {
       this.router.navigate(['']);

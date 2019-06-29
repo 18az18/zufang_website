@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {  Subscription } from 'rxjs';
 import { UserService } from '../../services/user/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-icon',
@@ -13,7 +14,7 @@ export class LoginIconComponent implements OnInit, OnDestroy {
   loggedUser: any;
   private userSub: Subscription;
 
-  constructor(private userSerivce: UserService) { }
+  constructor(private userSerivce: UserService, private router: Router) { }
 
   ngOnInit() {
     this.getUserUpdateListener();
@@ -35,6 +36,10 @@ export class LoginIconComponent implements OnInit, OnDestroy {
 
   logout() {
     this.userSerivce.logout();
+  }
+
+  checkProfile() {
+    this.router.navigate(['/account']);
   }
 
 }

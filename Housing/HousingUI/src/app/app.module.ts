@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,9 @@ import { LoginComponent } from './components/pages/login/login.component';
 import { LoginIconComponent } from './components/login-icon/login-icon.component';
 import { LoginformComponent } from './components/loginform/loginform.component';
 import { ContactformParagraphComponent } from './components/contactform-paragraph/contactform-paragraph.component';
+import { AccountComponent } from './components/pages/account/account.component';
+import { SignupComponent } from './components/pages/signup/signup.component';
+import { SignupFormComponent } from './components/signup-form/signup-form.component';
 
 @NgModule({
   declarations: [
@@ -33,12 +37,16 @@ import { ContactformParagraphComponent } from './components/contactform-paragrap
     LoginIconComponent,
     LoginformComponent,
     ContactformParagraphComponent,
+    AccountComponent,
+    SignupComponent,
+    SignupFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

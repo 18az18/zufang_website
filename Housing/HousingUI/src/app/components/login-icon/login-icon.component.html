@@ -2,7 +2,21 @@
     <a routerLink='/login'>Log In</a>
 </div>
 
-<div *ngIf="loggedIn">
+<!-- <div *ngIf="loggedIn">
   User logged in!
+  <button ></button>
   <button (click)="logout()"></button>
+</div> -->
+
+
+<div class="row" *ngIf="loggedIn">
+  <div class="col">
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>User</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem (click)="checkProfile()">My Account</button>
+        <button ngbDropdownItem (click)="logout()">Log Out</button>
+      </div>
+    </div>
+  </div>
 </div>
