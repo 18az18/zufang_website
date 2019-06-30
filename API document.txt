@@ -1,0 +1,208 @@
+﻿服务器启动指令：
+cd到/API文件夹内
+运行command：npm run start
+请确保mongodb is installed and operate on port 27027,
+a database called "Project1Name" will be created, the name can be changed in /db/mongoose.js
+
+
+
+API:
+
+
+一。Users Schema:
+
+1.新用户注册
+post-"/Signup":
+request{
+    name: "string"//username
+    email: "string"//useremail, validation will be done by backend through email
+    password: "string"//password
+    phoneNumber: "string"// cell phone number 
+}
+建立一个新的user，该user没有subscribe，role为guest,并在服务器端当前状态为login
+response
+success: 200
+{
+    error: false,
+    user: {
+        the entire user object created including all fields
+    }
+}
+用户名重复:400
+{
+    error: true,
+    message: "Duplicate user name, please try another one."
+}
+email地址不合格:400
+{
+    error: true,
+    message: "Please enter a valid email address."
+}
+未知error:400
+{
+    res.status(400).send({
+        error: true,
+        message: error// the error object itself 
+    });
+}
+
+2.用户登录
+post - "/login":
+request{
+    name:"string"
+    password:"string"
+}
+response
+success:200
+{
+    usertype: "string",// role of user, one of"guest", "residence", "manager" // 存储这些信息，其他api会需要id
+    username: "string",// user's name 
+    id: "string",// user's unique id in mongodb
+}
+email unverified 401:
+{error:true, message:'email unverified'}
+password incorrect 401:
+{error:true, message: 'incorrect password or username'}
+
+3.用户logout
+delete - "/logout" // no request body or any field to fill in
+200 on success, 500 on error // no response body
+
+4. 更改用户信息：（用户修改自身信息）
+patch - "/userSelfUpdate/:id" // :id 为用户的id, 在login时返回的那个
+request{
+    password: string
+    email: string
+    phoneNumber: string
+    subscribed: boolean// true or false, 
+}
+success：200
+{error: false}
+save to database fail:500
+{error:true, message:"fail to save to database"}
+unknown error: 400 
+{error:true, message:error}
+unauthried, user is not the userself or manager: 401
+{no response body}
+target user ID doesnt exist:404
+{no response body}
+
+
+
+5. 更改用户信息：(管理者权限)
+patch - '/userManagerUpdate/:id'   // :id 为用户的id, 在login时返回的那个
+request{
+    password: string
+    email: string
+    phoneNumber: string
+    subscribed: boolean // true or false, 
+    name: string //额外允许name被改动
+    emailVerified: boolean //额外允许直接改动email verification状态
+    role: string // "guest" or "residence" 允许变更user的状态，如果user原状态为manager，则不会产生任何变动
+}
+response
+success：200
+{error: false}
+save to database fail:500
+{error:true, message:"fail to save to database"}
+unknown error: 400 
+{error:true, message:error}
+unauthried, user is not the manager: 401
+{no response body}
+target user ID doesnt exist:404
+{no response body}
+
+
+6. 获取用户全部信息 //限manager
+get-'/user/:name' //注意这里使用的是name不是id，当然如果有需要也可以改成id, Example: url"/user/name1"，直接填入name即可
+res:
+success：200
+{entire user object}
+user notfound : 404 no response body
+unknown error : 500  no response body
+unauthrized: 401 no response body //not manager
+
+
+二。apartments Schema 
+
+
+
+***** 两个都需要manager权限，不是manager返还401没有response body
+
+
+
+
+1.创建新房间数据 创建时owner，rentedBy自动为null
+post - "/newAPT";
+{
+    number:123,//数据类型number，不用加双引号，房间号
+    type: string,
+    area: 123, // number, area of the room
+    description: [1,2,3], // 房间简介，长度三的array of numbers 不用双引号 几个bedroom几个bathroom几个den（应该是这三个具体看表格）
+    exposure: string, // 房间曝光情况
+    sellingPrice：1234, // 售出价格 number
+    rentalPrice：1234, // 出租价格number
+    status：string // 当前情况
+}
+response:
+success:200
+{
+    error: false,
+    apartment: entire apartment object
+}
+unknown error: 400
+{
+    error: true,
+    message: the error object
+}
+
+
+2. 更新房屋信息 
+put - '/updateAPT/:id' // :id为APT的id
+request body
+{all fields above are valid optional to modify, and in additional you may change add field 
+    owner: string//userid
+    rentedBy: string//userid
+}
+response:
+success 200
+{
+    error: false,
+    announcement: announcement
+}
+unknown error: 400
+{
+    error: true,
+    message: the error object
+}
+not found 404:
+no response body
+
+
+三。announcements:
+只有发布和改动两个功能，同房屋信息一样， 需求manager以上
+
+发布：
+post - "/newAnnouncement"
+request{
+    context: string to post
+}
+response: 
+success 200:
+{
+    error: false,
+    announcement: the announcement object
+})
+unknown error  400:
+{
+    error: true,
+    message: error object
+}
+更改
+patch- '/updateAnnouncement/:id' // announcement id
+request：
+{context: string}
+response: 
+200 on success {error: false}
+500 on databse error {error:true, message:"fail to save to database"}
+400 on unkown error {error: true, message: error object}

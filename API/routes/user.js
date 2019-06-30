@@ -176,7 +176,7 @@ module.exports = function (app) {
                 });
             }
         }).catch((error) => {
-            res.status(400).send(error);
+            res.status(400).send({error:true, message:error});
         });
     });
 
@@ -216,7 +216,7 @@ module.exports = function (app) {
                 });
             }
         }).catch((error) => {
-            res.status(400).send(error);
+            res.status(400).send({error:true, message: error});
         });
     });
 
@@ -229,9 +229,9 @@ module.exports = function (app) {
                 name: name
             }).then((result) => {
                 if (!result) {
-                    res.status(404).send({error:true, message:"not found in database"});
+                    res.status(404).send();
                 } else {
-                    res.send(result);
+                    res.status(200).send(result);
                 }
             }, (error) => {
                 res.status(500).send(error);

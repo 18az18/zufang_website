@@ -11,10 +11,10 @@ module.exports = function (app) {
             type: req.body.type,
             area: req.body.area,
             description: req.body.description,
-            exposure: "somestring for exposure",
-            sellingPrice: 1000,
-            rentalPrice: 1000,
-            currentStatus: "somestring for status"
+            exposure: req.body.exposure,
+            sellingPrice: req.body.sellingPrice,
+            rentalPrice: req.body.rentalPrice,
+            currentStatus: req.body.status
         })
         apt.save()
         .then((apt)=>{
@@ -33,7 +33,7 @@ module.exports = function (app) {
     )
 
 
-    app.patch('/updateAPT/:id', authenticateManager, (req, res) => {
+    app.put('/updateAPT/:id', authenticateManager, (req, res) => {
         const id = req.params.id;
         if (!ObjectID.isValid(id)) {
             res.status(404).send();
