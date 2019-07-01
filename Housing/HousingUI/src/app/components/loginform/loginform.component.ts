@@ -22,11 +22,14 @@ export class LoginformComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('trying to log in with');
-    console.log(this.loginForm.get('userName').value);
-    console.log('and');
-    console.log(this.loginForm.get('password').value);
-    this.userService.login();
+    const username = this.loginForm.get('userName').value;
+    const password = this.loginForm.get('password').value;
+    this.userService.login(username, password).subscribe(res => {
+      console.log(res);
+      this.router.navigate(['']);
+    }, error => {
+      console.log(error.error.message);
+    });
   }
 
   signup() {

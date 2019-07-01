@@ -7,6 +7,15 @@ const bodyParser = require('body-parser');
 const app = express();
 const session = require('express-session');
 const port = process.env.PORT || 3000;
+const cors = require('cors');
+let corsOptions = {
+    origin: ["http://localhost:4200"],
+    optionsSuccessStatus: 200,
+    credentials: true
+}
+
+app.use(cors(corsOptions));
+
 
 app.use(bodyParser.urlencoded({
     limit: '5mb',
@@ -28,6 +37,12 @@ app.use(session({
         httpOnly: true
     }
 }));
+
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Methods', ['GET', 'POST', 'DELETE', 'PUT']);
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  next();
+});
 
 
 //routes

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -9,6 +10,7 @@ const httpOptions = {
   })
 };
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,16 +18,23 @@ export class UserService {
 
   private userUpdated = new Subject<any>();
 
+  private url = 'http://localhost:3000/';
+
+
   constructor(private router: Router, private http: HttpClient) { }
 
-  login() {
-    const url = 'http://localhost:3000/';
-    this.userUpdated.next(true);
-    this.router.navigate(['']);
+  login(username: string, password: string): Observable<any>{
+    const loginUrl = this.url + 'login';
+    return this.http.post(loginUrl, {username, password}, httpOptions).pipe(tap(res => {
+      this.userUpdated.next(res);
+    }));
   }
 
-  signup() {
-    const url = 'http://localhost:3000/';
+  signup(username: string, password: string, email: string, phoneNumber: string) {
+    const signupUrl = this.url + 'signup';
+    return this.http.post(signupUrl, {username, password, email, phoneNumber}, httpOptions).pipe(tap(res => {
+      this.userUpdated.next(res);
+    }));
   }
 
   // login(username: string, password: string) {
@@ -34,11 +43,10 @@ export class UserService {
   // }
 
   logout() {
-    const url = 'http://localhost:3000/';
-    this.userUpdated.next(false);
-    if (this.router.url === 'signin') {
-      this.router.navigate(['']);
-    }
+    const logoutUrl = this.url + 'logout';
+    return this.http.delete(logoutUrl, httpOptions).pipe(tap(res => {
+      this.userUpdated.next(null);
+    }));
   }
 
   getUserUpdateListener() {

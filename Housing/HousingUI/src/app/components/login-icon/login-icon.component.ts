@@ -35,7 +35,11 @@ export class LoginIconComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-    this.userSerivce.logout();
+    this.userSerivce.logout().subscribe(res => {
+      if (this.router.url === 'signin') {
+        this.router.navigate(['']);
+      }
+    });
   }
 
   checkProfile() {
