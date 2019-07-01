@@ -19,7 +19,7 @@ request{
     password: "string"//password
     phoneNumber: "string"// cell phone number 
 }
-建立一个新的user，该user没有subscribe，role为guest,并在服务器端当前状态为login
+建立一个新的user，该user没有subscribe，role为guest,没有进行emaiverify所以无法进行login
 response
 success: 200
 {
@@ -185,7 +185,12 @@ no response body
 发布：
 post - "/newAnnouncement"
 request{
-    context: string to post
+    email:boolean,        // 是否要发email
+    announcement:{             // the announcement object, has one title which will be used in email "subject" field and one context
+        "title":string,        //the title
+        "context":stirng        // the string
+        }
+    
 }
 response: 
 success 200:
@@ -198,10 +203,12 @@ unknown error  400:
     error: true,
     message: error object
 }
+
+
 更改
 patch- '/updateAnnouncement/:id' // announcement id
 request：
-{context: string}
+{title:string, context: string}
 response: 
 200 on success {error: false}
 500 on databse error {error:true, message:"fail to save to database"}
