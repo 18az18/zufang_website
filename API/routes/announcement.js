@@ -3,17 +3,49 @@
 
 const {announcement} = require('../models/announcement');
 const {ObjectID} = require('mongodb');
+const {User} = require('../models/user');
 const {authenticateManager, authenticateAdmin, authenticateUser, authenticateSelfOrManager} = require("./authentication");
+const {transporter} = require('./email');
+
 module.exports = function (app) {
 
     app.post("/newAnnouncement", authenticateManager, (req, res)=>{
-        const announce = new announcement(req.body)
+        const announce = new announcement(req.body.announcement)
         announce.save()
         .then((announcement)=>{
-            res.status(200).send({
-                error: false,
-                announcement: announcement
-            });
+            if (req.body.email){
+                User.findSubscribedEmails()
+                .then(
+                    (list)=>{
+                        console.log(list.join());
+                        const mailOptions = {
+                            from: 'Ustyle Condominium', 
+                            to: list.join(),
+                            subject: announcement.title, 
+                            text: announcement.context, 
+                            html: '' // html body
+                        };
+                        transporter.sendMail(mailOptions, function(error, info){
+                            if(error){
+                                res.status(200).send({
+                                    error: true,
+                                    message: "email wasnt successfully send"
+                                })
+                            }
+                            console.log('Message sent: ' + info.response);
+                            res.status(200).send({
+                                error: false,
+                                announcement: announcement
+                            });
+                        });
+                    }
+                )
+            }else{
+                res.status(200).send({
+                    error: false,
+                    announcement: announcement
+                });
+            }
         })
         .catch((error)=>{
             res.status(400).send({

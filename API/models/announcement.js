@@ -3,6 +3,7 @@
 const mongoose = require('mongoose');
 
 const announcementSchema = new mongoose.Schema({
+    title:String,
     context: String,
     time : { type : Date, default: Date.now }
 });

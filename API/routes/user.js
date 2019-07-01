@@ -1,11 +1,16 @@
 // User routes below
 'use strict';
 
+// The URL to redirect to after email redirection
+const EmailURL = 'http://localhost:4200/';
+
+
 const {    User} = require('../models/user');
 const {    ObjectID} = require('mongodb');
 const {authenticateManager, authenticateAdmin, authenticateUser, authenticateSelfOrManager} = require("./authentication");
 const {transporter} = require('./email');
 const randomstring = require('randomstring');
+
 
 
 module.exports = function (app) {
@@ -24,18 +29,17 @@ module.exports = function (app) {
                 // currently skipping verify email part
             });
             // save user to the database
-            user.save().then((user) => {
-                req.session.user = user._id;
+            user.save().then((user) => {                
                 const mailOptions = {
-                    from: 'Ustyle Condominium', // sender address (who sends)
-                    to: user.email, // list of receivers (who receives)
-                    subject: 'email verification - non reply', // Subject line
-                    text: '', // plaintext body
+                    from: 'Ustyle Condominium', 
+                    to: user.email, 
+                    subject: 'email verification - non reply', 
+                    text: '', 
                     html: '<div>\
-                                <h1 >Welcome to join us</h1>\
+                                <h1 >Welcome to join Ustyle</h1>\
                                 <br>\
                                 <br>\
-                                <a href="http://localhost:3000/verifyemail/'+user.emailSecret+'/'+user._id+'"> <strong>click here for email verification</strong></a>\
+                                <a href="http://localhost:3000/verifyemail/'+user.emailSecret+'/'+user._id+'"> <strong> click here for email verification</strong></a>\
                                 <br>\
                                 <h4>Ustyle Community</h4>\
                             </div>' // html body
@@ -93,7 +97,8 @@ module.exports = function (app) {
                             res.status(500).send({error:true, message:"fail to save to database"});
                         } else {
                             // redirect to our main page
-                            res.redirect('http://localhost:4200/');
+                            req.session.user = result._id;
+                            res.redirect(EmailURL);
                         }
                     }, (error) => {
                         return Promise.reject(error);
@@ -236,5 +241,24 @@ module.exports = function (app) {
             }, (error) => {
                 res.status(500).send(error);
             });
+        });
+
+        app.get('/userstatus',
+        (req, res) => {
+            if (req.session.user) {
+                User.findById(req.session.user).then((user) => {
+                    if (!user) {
+                        req.session.destroy();
+                        res.status(200).send({user: null});
+                    } else {
+                        res.status(200).send({ user:user});
+                    }
+                }).catch((error) => {
+                    req.session.destroy();
+                    res.status(200).send({user: null});
+                })
+            } else {
+                res.status(200).send({user: null});
+            }
         });
 };

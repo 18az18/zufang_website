@@ -70,9 +70,22 @@ UserSchema.statics.findByNamePassword = function(name, password) {
                     reject();
                 }
             })
-        });
+        }); 
     })
 };
+
+UserSchema.statics.findSubscribedEmails = function(name, password) {
+    const User = this;
+    return User.find({subscribed: true}).then((users) => {
+        if (!users) {
+            return [];
+        }else{
+            return users.map(user=>user.email);
+        } 
+        ;
+    })
+};
+
 
 // This function runs before saving user to database, which encrypt the user password
 UserSchema.pre('save', function(next) {
