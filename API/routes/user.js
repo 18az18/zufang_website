@@ -206,13 +206,13 @@ module.exports = function (app) {
                 result.emailVerified = req.body.emailVerified? req.body.emailVerified: result.emailVerified;
                 // be extra careful updating the role
                 if (req.body.role 
-                    && (req.body.role ==="guest"||req.body.role ==="residence") 
-                    && (result.role ==="guest" || result.role ==="residence")){
+                    && (req.body.role === "guest"||req.body.role === "residence") 
+                    && (result.role === "guest" || result.role === "residence")){
                     result.role = req.body.role;
                 }
                 result.save().then((result) => {
                     if (!result) {
-                        res.status(500).send({error:true, message:"fail to save to database"});
+                        res.status(500).send({error: true, message:"fail to save to database"});
                     } else {
                         res.status(200).send({error: false});
                     }
@@ -221,7 +221,7 @@ module.exports = function (app) {
                 });
             }
         }).catch((error) => {
-            res.status(400).send({error:true, message: error});
+            res.status(400).send({error: true, message: error});
         });
     });
 
@@ -243,22 +243,22 @@ module.exports = function (app) {
             });
         });
 
-        app.get('/userstatus',
-        (req, res) => {
-            if (req.session.user) {
-                User.findById(req.session.user).then((user) => {
-                    if (!user) {
-                        req.session.destroy();
-                        res.status(200).send({user: null});
-                    } else {
-                        res.status(200).send({ user:user});
-                    }
-                }).catch((error) => {
+    app.get('/userstatus',
+    (req, res) => {
+        if (req.session.user) {
+            User.findById(req.session.user).then((user) => {
+                if (!user) {
                     req.session.destroy();
                     res.status(200).send({user: null});
-                })
-            } else {
+                } else {
+                    res.status(200).send({user: user});
+                }
+            }).catch((error) => {
+                req.session.destroy();
                 res.status(200).send({user: null});
-            }
-        });
+            })
+        } else {
+            res.status(200).send({user: null});
+        }
+    });
 };

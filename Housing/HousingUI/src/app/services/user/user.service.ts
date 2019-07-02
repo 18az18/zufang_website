@@ -30,10 +30,9 @@ export class UserService {
     }));
   }
 
-  signup(username: string, password: string, email: string, phoneNumber: string) {
+  signup(name: string, password: string, email: string, phoneNumber: string) {
     const signupUrl = this.url + 'signup';
-    return this.http.post(signupUrl, {username, password, email, phoneNumber}, httpOptions).pipe(tap(res => {
-      this.userUpdated.next(res);
+    return this.http.post(signupUrl, {name, password, email, phoneNumber}, httpOptions).pipe(tap(res => {
     }));
   }
 

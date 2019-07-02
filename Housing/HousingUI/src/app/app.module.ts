@@ -21,6 +21,7 @@ import { ContactformParagraphComponent } from './components/contactform-paragrap
 import { AccountComponent } from './components/pages/account/account.component';
 import { SignupComponent } from './components/pages/signup/signup.component';
 import { SignupFormComponent } from './components/signup-form/signup-form.component';
+import { PicRollerComponent } from './components/pic-roller/pic-roller.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { SignupFormComponent } from './components/signup-form/signup-form.compon
     ContactformParagraphComponent,
     AccountComponent,
     SignupComponent,
-    SignupFormComponent
+    SignupFormComponent,
+    PicRollerComponent
   ],
   imports: [
     BrowserModule,
