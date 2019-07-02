@@ -10,6 +10,8 @@ export class PicRollerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
+
   }
 
 }

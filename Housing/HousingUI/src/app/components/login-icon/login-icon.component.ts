@@ -10,13 +10,14 @@ import { Router } from '@angular/router';
 })
 export class LoginIconComponent implements OnInit, OnDestroy {
 
-  loggedIn = true;
+  loggedIn: boolean;
   loggedUser: any;
   private userSub: Subscription;
 
   constructor(private userSerivce: UserService, private router: Router) { }
 
   ngOnInit() {
+    this.getInitialUser();
     this.getUserUpdateListener();
   }
 
@@ -30,8 +31,20 @@ export class LoginIconComponent implements OnInit, OnDestroy {
     // store the loggedUser info accordindly for when user logout/user profile
   }
 
+  getInitialUser() {
+    this.userSerivce.getInitialUser().subscribe(res => {
+      this.loggedIn = res.user;
+    }, err => {
+      this.loggedIn = null;
+    });
+  }
+
   ngOnDestroy() {
     this.userSub.unsubscribe();
+  }
+
+  login() {
+    this.router.navigate(['/login']);
   }
 
   logout() {

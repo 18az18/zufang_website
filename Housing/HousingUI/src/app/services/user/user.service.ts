@@ -20,10 +20,9 @@ export class UserService {
 
   private url = 'http://localhost:3000/';
 
-
   constructor(private router: Router, private http: HttpClient) { }
 
-  login(username: string, password: string): Observable<any>{
+  login(username: string, password: string): Observable<any> {
     const loginUrl = this.url + 'login';
     return this.http.post(loginUrl, {username, password}, httpOptions).pipe(tap(res => {
       this.userUpdated.next(res);
@@ -50,5 +49,10 @@ export class UserService {
 
   getUserUpdateListener() {
     return this.userUpdated.asObservable();
+  }
+
+  getInitialUser(): Observable<any> {
+    const userUrl = this.url + 'userstatus';
+    return this.http.get(userUrl, httpOptions);
   }
 }
