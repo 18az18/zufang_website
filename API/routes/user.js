@@ -127,7 +127,7 @@ module.exports = function (app) {
     // request body: {name:..., password:...}
     app.post('/login',
         (req, res) => {
-            const name = req.body.name;
+            const name = req.body.username;
             const password = req.body.password;
 
             User.findByNamePassword(name, password).then((user) => {
