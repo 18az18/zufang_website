@@ -51,7 +51,15 @@ module.exports = function (app) {
                     console.log('Message sent: ' + info.response);
                     res.status(200).send({
                         error: false,
-                        user: user
+                        user: {
+                            emailVerified: false,
+                            subscribed: false,
+                            role: user.role,
+                            _id: user._id,
+                            name: user.name,
+                            email: user.email,
+                            phoneNumber: user.phoneNumber,
+                        }
                     });
                 });
                 
