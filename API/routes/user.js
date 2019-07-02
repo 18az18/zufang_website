@@ -127,8 +127,8 @@ module.exports = function (app) {
                     res.status(401).send({error:true, message: 'incorrect password or username'});
                 } else {
                     req.session.user = user._id;
-                    console.log("user: " + req.session.user + " has logged in");
                     if(user.emailVerified){
+                        console.log("user: " + req.session.user + " has logged in");
                         res.status(200).send({
                             usertype: user.role,
                             username: user.name,
