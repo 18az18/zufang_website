@@ -48,7 +48,7 @@ module.exports = function (app) {
                     if(error){
                         return console.log(error);
                     }
-                    console.log('Message sent: ' + info.response);
+                    console.log('email sent: ' + info.response);
                     res.status(200).send({
                         error: false,
                         user: {
@@ -234,8 +234,8 @@ module.exports = function (app) {
     });
 
 
-    // get the user's info for manager
-    app.get('/user/:name', authenticateManager, 
+    // get the user's info for manager or himself
+    app.get('/user/:name', authenticateSelfOrManager, 
         (req, res) => {
             const name = req.params.name;
             User.findOne({
@@ -269,4 +269,32 @@ module.exports = function (app) {
             res.status(200).send({user: null});
         }
     });
+
+    //{name:string, text:string, email:string}
+    app.post('contactform', (req,res)=>{
+        const mailOptions = {
+            from: '', 
+            to: 'info@Ustylewaterloo.com', 
+            subject: 'message from:' +req.body.name, 
+            text: '', 
+            html: '<div>\
+                        <h1 >From '+req.body.email+'/h1>\
+                        <br>\
+                        <br>\
+                        <p>'+req.body.text+'</p>\
+                        <br>\
+                        <h4>through website portal</h4>\
+                    </div>' // html body
+        };
+        transporter.sendMail(mailOptions, function(error, info){
+            if(error){
+                return console.log(error);
+            }
+            console.log('email sent:' + info.response);
+            res.status(200).send({
+                error: false,
+                message: 'message cna be viewed in email info@Ustylewaterloo.com'
+            });
+        });
+    })
 };
