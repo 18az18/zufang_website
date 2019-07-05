@@ -1,4 +1,3 @@
-// User routes below
 'use strict';
 
 const {announcement} = require('../models/announcement');
