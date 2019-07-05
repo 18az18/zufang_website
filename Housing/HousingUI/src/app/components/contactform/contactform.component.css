@@ -1,5 +1,36 @@
 form{
     position: relative;
-    background-color: red;
-    z-index:3;
+    /* background-color: rgba(1,1,1,0.5); */
+    z-index:3;width:1000px;margin:0 auto;
+    position: relative;margin-top: -565px;height:565px;
+    padding-left: 556px;padding-top: 176px;
+}
+
+form .a{
+    position: relative;
+    display: flex;
+}
+form .a input{ 
+    border: none;height:38px;padding: 3px 3px 3px 12px;
+    background-color: #ffffff;margin-right: 20px;width:175px;
+}
+form .a input:hover{ 
+    background-color: #10e698;
+}
+form .b textarea{ 
+    border: none;height:38px;padding: 3px 3px 3px 12px;
+    background-color: #ffffff;margin-right: 20px;width:370px;height: 150px;
+    margin-top: 10px;
+}
+form .b textarea:hover{
+    background-color: #10e698;
+}
+form .c button{
+    background-color: #10e698;color:white;width:370px;cursor: pointer;
+    margin-top: 10px;height:47px;font-weight: 500;font-size: 17px;
+    border: none;
+}
+form .c button:hover{
+    background-color: #10e6988f;
+    transition: all 0.3s ease;
 }

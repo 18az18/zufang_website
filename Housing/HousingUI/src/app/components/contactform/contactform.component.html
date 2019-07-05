@@ -1,48 +1,60 @@
 
 <div>
   <app-contactform-paragraph></app-contactform-paragraph>
-  <form (ngSubmit)="onSubmit()" [formGroup]="contactForm">
-    <div>
-      <input type="text" formControlName="name" placeholder="Name" required>
-      <!-- <div [hidden]="Name.valid || Name.pristine" class="alert alert-danger">
-              Name is required
-      </div> -->
-      <div *ngIf="contactForm.get('name').errors &&
-                (contactForm.get('name').touched) || contactForm.get('name').dirty">
-        <div *ngIf="!!contactForm.get('name').errors?.required">
-            Name is required
-        </div>
+
+  <form  class="w" (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+
+      <div class="a">
+          <div>
+              <input type="text" formControlName="name" placeholder="Name" required>
+              <!-- <div [hidden]="Name.valid || Name.pristine" class="alert alert-danger">
+                      Name is required
+              </div> -->
+              <div *ngIf="contactForm.get('name').errors &&
+                        (contactForm.get('name').touched) || contactForm.get('name').dirty">
+                <div *ngIf="!!contactForm.get('name').errors?.required">
+                    Name is required
+                </div>
+              </div>
+
+            </div>
+            <div>
+              <input type="email" formControlName="email" placeholder="Email" required>
+              <!-- <div [hidden]="Email.valid || Email.pristine" class="alert alert-danger">
+                      Email is required
+              </div> -->
+              <div *ngIf="contactForm.get('email').errors &&
+                        (contactForm.get('email').touched) || contactForm.get('email').dirty">
+                <div *ngIf="!!contactForm.get('email').errors?.required">
+                    Email is required
+                </div>
+                <div *ngIf="!!contactForm.get('email').errors?.email">
+                    Email is invalid
+                </div>
+              </div>
+            </div>
+      </div>
+      <div class="b">
+          <div>
+              <textarea rows="6" formControlName="message" placeholder="Message" required>
+              <!-- <div [hidden]="Message.valid || Message.pristine" class="alert alert-danger">
+                      Message is required
+              </div> -->
+              </textarea>
+              <div *ngIf="contactForm.get('message').errors &&
+                        (contactForm.get('message').touched) || contactForm.get('message').dirty">
+                <div *ngIf="!!contactForm.get('message').errors?.required">
+                    Messages can not be empty
+                </div>
+              </div>
+            </div>
+      </div>
+      <div class="c">
+         <button type="submit" [disabled]="!contactForm.valid">Contact Us Now</button>
+
       </div>
 
-    </div>
-    <div>
-      <input type="email" formControlName="email" placeholder="Email" required>
-      <!-- <div [hidden]="Email.valid || Email.pristine" class="alert alert-danger">
-              Email is required
-      </div> -->
-      <div *ngIf="contactForm.get('email').errors &&
-                (contactForm.get('email').touched) || contactForm.get('email').dirty">
-        <div *ngIf="!!contactForm.get('email').errors?.required">
-            Email is required
-        </div>
-        <div *ngIf="!!contactForm.get('email').errors?.email">
-            Email is in invalid form
-        </div>
-      </div>
-    </div>
-    <div>
-      <textarea rows="6" formControlName="message" placeholder="Message" required>
-      <!-- <div [hidden]="Message.valid || Message.pristine" class="alert alert-danger">
-              Message is required
-      </div> -->
-      </textarea>
-      <div *ngIf="contactForm.get('message').errors &&
-                (contactForm.get('message').touched) || contactForm.get('message').dirty">
-        <div *ngIf="!!contactForm.get('message').errors?.required">
-            Messages can not be empty
-        </div>
-      </div>
-    </div>
-    <button type="submit" [disabled]="!contactForm.valid">Contact Us Now</button>
+
+
   </form>
 </div>
