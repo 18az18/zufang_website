@@ -60,8 +60,8 @@ module.exports = function (app) {
     })
 
     // get all available floors given body{type: string}
-    app.get("/getAvailableFloorNums", (req, res)=>{
-        apartment.find({$and:[{rentedBy:null},{owner:null},{type:req.body.type}] })
+    app.get("/getAvailableFloorNums/:type", (req, res)=>{
+        apartment.find({$and:[{rentedBy:null},{owner:null},{type:req.params.type}] })
         .then((apts)=>{
             let floorNums = apts.map((apt)=>apt.floor);
             floorNums = [ ...new Set(floorNums) ];
@@ -80,8 +80,8 @@ module.exports = function (app) {
     })
 
     // get method for Apartment Using body:{unitNumber:String unitNumber}
-    app.get("/getOneApt", (req,res)=>{
-        apartment.findOne({unitNumber: req.body.unitNumber})
+    app.get("/getOneApt/:unitNumber", (req,res)=>{
+        apartment.findOne({unitNumber: req.params.unitNumber})
         .then((apt)=>{
             res.status(200).send({
                 error: false,
@@ -98,9 +98,9 @@ module.exports = function (app) {
 
 
     // get all APT given body:{floorNum: int, type:string}
-    app.get("/AllApts", (req, res)=>{
+    app.get("/AllApts/:floorNum/:type", (req, res)=>{
         apartment.find(
-            { $and:[{floor:req.body.floorNum},{type:req.body.type}] }
+            { $and:[{floor:req.params.floorNum},{type:req.params.type}] }
         ).then((aptArray)=>{
             res.status(200).send({
                 error: false,
@@ -115,9 +115,9 @@ module.exports = function (app) {
     })
 
     // get all empty apartment given a floor, body:{floorNum: int, type: string}
-    app.get("/EmptyApts", (req, res)=>{
+    app.get("/EmptyApts/:floorNum/:type", (req, res)=>{
         apartment.find(
-            { $and:[{floor:req.body.floorNum},{rentedBy:null},{owner:null},{type:req.body.type}] }
+            { $and:[{floor:req.params.floorNum},{rentedBy:null},{owner:null},{type:req.params.type}] }
         ).then((aptArray)=>{
             res.status(200).send({
                 error: false,
