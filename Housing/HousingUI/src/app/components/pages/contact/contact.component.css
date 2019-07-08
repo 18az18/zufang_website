@@ -1,0 +1,61 @@
+.a{
+    background-color: white;margin-top: 200px;
+    z-index: 999;position: relative;
+    width: 100%;height:655px;text-align: center;padding-top: 55px;
+
+    -webkit-animation-name: t-b_anim; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 1.5s; /* Safari 4.0 - 8.0 */
+    animation-name: t-b_anim;
+    animation-duration: 1.5s;
+}
+.a h1{
+    color:#d4d4d4;font-size: 46px;margin: 0;
+}
+.a h4{
+    color:#bfbfbf;font-size: 20px;font-weight: 400;
+    margin-bottom: 55px;
+}
+.a .b{
+    position: relative;display: flex;
+    width:999px;margin:0 auto;
+}
+.a .b .c{
+    width:333px !important;height:360px;text-align: center;
+    /* border:1px solid red; */
+    min-width: 333px;
+}
+.c p{
+    font-size: 16px;margin-top: 210px;
+}
+.d{
+    background-color: #bfbfbf;
+}
+.e{
+    background-color: rgb(245, 96, 96);
+}
+.f{
+    background-color: rgb(75, 148, 245);
+}
+.d p{
+    color:black;
+}
+.e p{
+    color:white;
+}
+.f p{
+    color:white;
+}
+
+
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes t-b_anim {
+    0%   {margin-top: -200px;opacity: 0;}
+    100% {margin-top: 200px;opacity: 1;}
+    }
+    
+    /* Standard syntax */
+    @keyframes t-b_anim {
+        0%   {margin-top: -200px;opacity: 0;}
+        100% {margin-top: 200px;opacity: 1;}
+    }
