@@ -63,12 +63,34 @@
               </div>
           </label>
       </div>
+
       <div>
+        <label>
+          Type Selection
+          <select formControlName="types" required>
+              <option [ngValue]="null">Choose an option</option>
+              <option *ngFor="let type of types; let i = index" [ngValue]="type.name">
+                {{type.name}}
+              </option>
+          </select>
+            <!-- <div [hidden]="Name.valid || Name.pristine" class="alert alert-danger">
+                    Name is required
+            </div> -->
+            <div *ngIf="reservationForm.get('types').errors &&
+                      (reservationForm.get('types').touched) || reservationForm.get('types').dirty">
+              <div *ngIf="!!reservationForm.get('types').errors?.required">
+                  Please select your desired room type first
+              </div>
+            </div>
+        </label>
+      </div>
+
+      <div *ngIf="hasFloorOption && (reservationForm.get('types').value != null)">
           <label>
             Floor Selection
             <select formControlName="floors" required>
                 <option [ngValue]="null">Choose an option</option>
-                <option *ngFor="let floor of floors; let i = index" [ngValue]="floor.id">
+                <option *ngFor="let floor of floors; let i = index" [ngValue]="floor.name">
                   {{floor.name}}
                 </option>
             </select>
@@ -84,12 +106,18 @@
           </label>
       </div>
 
+      <div *ngIf="!hasFloorOption && (reservationForm.get('types').value != null)">
+        <p> value is : {{ reservationForm.get('types').value }}</p>
+        <p>Please select a different room type as there is no available rooms for your current choice
+          of type</p>
+      </div>
+
       <div [hidden]="reservationForm.get('floors').value == null">
         <label>
           Room Selection
           <select formControlName="rooms" required>
               <option [ngValue]="null">Choose an option</option>
-              <option *ngFor="let room of rooms; let i = index" [ngValue]="room.id">
+              <option *ngFor="let room of rooms; let i = index" [ngValue]="room.name">
                 {{room.name}}
               </option>
           </select>

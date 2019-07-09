@@ -14,17 +14,34 @@ const httpOptions = {
 })
 export class FormService {
 
+  private url = 'http://localhost:3000/';
+
   constructor(private http: HttpClient) { }
 
   // submit the contact us form to server
-  submitContactForm(name: string, email: string, message: string): Observable<any> {
-    const url = 'http://localhost:3000/';
-    return this.http.post(url, {name, email, message}, httpOptions);
+  submitContactForm(name: string, email: string, text: string): Observable<any> {
+    const contactUrl = this.url + 'contactform';
+    return this.http.post(contactUrl, {name, email, text}, httpOptions);
   }
 
   // submit the reservation form to server
   submitReservationForm(): Observable<any> {
-    const url = 'http://localhost:3000/';
+    const reservationUrl = this.url + '';
+    return;
+  }
+
+  submitProfileForm(): Observable<any> {
+    const profileUrl = this.url + '';
     return ;
+  }
+
+  getApartmentTypes(): Observable<any> {
+    const typeUrl = this.url + 'getAvailableTypes/';
+    return this.http.get(typeUrl, httpOptions);
+  }
+
+  getAvailableFloors(type: string): Observable<any> {
+    const floorUrl = this.url + 'getAvailableFloors/' + type;
+    return this.http.get(floorUrl, httpOptions);
   }
 }

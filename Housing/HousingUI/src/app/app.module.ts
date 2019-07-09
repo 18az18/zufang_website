@@ -22,6 +22,9 @@ import { AccountComponent } from './components/pages/account/account.component';
 import { SignupComponent } from './components/pages/signup/signup.component';
 import { SignupFormComponent } from './components/signup-form/signup-form.component';
 import { PicRollerComponent } from './components/pic-roller/pic-roller.component';
+import { ContactusComponent } from './components/contactus/contactus.component';
+import { AccountHeaderComponent } from './components/account-header/account-header.component';
+import { AccountFormComponent } from './components/account-form/account-form.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import { PicRollerComponent } from './components/pic-roller/pic-roller.component
     AccountComponent,
     SignupComponent,
     SignupFormComponent,
-    PicRollerComponent
+    PicRollerComponent,
+    ContactusComponent,
+    AccountHeaderComponent,
+    AccountFormComponent
   ],
   imports: [
     BrowserModule,

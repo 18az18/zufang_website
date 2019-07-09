@@ -16,7 +16,7 @@ const httpOptions = {
 })
 export class UserService {
 
-  private userUpdated = new Subject<any>();
+  userUpdated = new Subject<any>();
 
   private url = 'http://localhost:3000/';
 
