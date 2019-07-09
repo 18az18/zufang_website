@@ -274,11 +274,11 @@ module.exports = function (app) {
     app.post('/contactform', (req,res)=>{
         const mailOptions = {
             from: '', 
-            to: '18az18@gmail.com', 
+            to: 'jerryx.xu@mail.utoronto.ca', 
             subject: 'message from:' + req.body.name, 
             text: '', 
             html: '<div>\
-                        <h1>From '+ req.body.email + '/h1>\
+                        <h1>From '+ req.body.email + '</h1>\
                         <br>\
                         <br>\
                         <p>' + req.body.text + '</p>\
