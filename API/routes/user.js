@@ -271,17 +271,17 @@ module.exports = function (app) {
     });
 
     //{name:string, text:string, email:string}
-    app.post('contactform', (req,res)=>{
+    app.post('/contactform', (req,res)=>{
         const mailOptions = {
             from: '', 
-            to: 'info@Ustylewaterloo.com', 
-            subject: 'message from:' +req.body.name, 
+            to: 'jerryx.xu@mail.utoronto.ca', 
+            subject: 'message from:' + req.body.name, 
             text: '', 
             html: '<div>\
-                        <h1 >From '+req.body.email+'/h1>\
+                        <h1>From '+ req.body.email + '</h1>\
                         <br>\
                         <br>\
-                        <p>'+req.body.text+'</p>\
+                        <p>' + req.body.text + '</p>\
                         <br>\
                         <h4>through website portal</h4>\
                     </div>' // html body
