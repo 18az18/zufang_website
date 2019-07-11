@@ -5,7 +5,7 @@ import {Component,OnInit} from "@angular/core";
 	templateUrl: './pic-roller.component.html',
   	styleUrls: ['./pic-roller.component.css']
 })
-export class TestComponent implements OnInit {
+export class PicRollerComponent implements OnInit {
 	currentPic = 0;
 	constructor() {
 	setInterval(() => {
