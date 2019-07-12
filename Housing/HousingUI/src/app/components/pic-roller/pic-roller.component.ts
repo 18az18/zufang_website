@@ -1,17 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import {Component,OnInit} from "@angular/core";
 
 @Component({
-  selector: 'app-pic-roller',
-  templateUrl: './pic-roller.component.html',
-  styleUrls: ['./pic-roller.component.css']
+	selector: 'app-pic-roller',
+	templateUrl: './pic-roller.component.html',
+  	styleUrls: ['./pic-roller.component.css']
 })
 export class PicRollerComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-
-
-  }
+	currentPic = 0;
+	constructor() {
+		setInterval(() => {
+        	let id = (this.currentPic + 1) % 3;
+            this.currentPic = id;},3000);
+    }
+    changebanner(id){
+        console.log(id)
+        this.currentPic = id;
+    }
+    ngOnInit() {
+    }
 
 }
