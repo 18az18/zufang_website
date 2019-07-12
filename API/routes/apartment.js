@@ -131,6 +131,23 @@ module.exports = function (app) {
         })
     })
 
+    // get all empty apartment given a floor, body:{floorNum: int, type: string}
+    app.get("/AllEmptyApts/:type", (req, res)=>{
+        apartment.find(
+            { $and:[{rentedBy:null},{owner:null},{type:req.params.type}] }
+        ).then((aptArray)=>{
+            res.status(200).send({
+                error: false,
+                apartments: aptArray.map( apt=>{return { id:apt.id, unitNumber: apt.unitNumber}})
+            })
+        }).catch((error)=>{
+            res.status(400).send({
+                error: true,
+                message: error
+            })
+        })
+    })
+
     // update an APT
     app.put('/updateAPT/:id', authenticateManager, (req, res) => {
         const id = req.params.id;
