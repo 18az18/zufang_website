@@ -12,6 +12,7 @@ export class RoomDisplayComponent implements OnInit {
   availableUnits = [
     {id: 1, unitNumber: '502'}
   ];
+  // availableUnits: string[];
 
   constructor(private roomService: RoomService) { }
 
@@ -20,9 +21,11 @@ export class RoomDisplayComponent implements OnInit {
     this.roomService.getAvailableUnits(this.type).subscribe(res => {
       // this.availableUnits = res;
       console.log(res);
+      // this.availableUnits = res;
     }, err => {
       console.log(err);
     });
   }
+
 
 }

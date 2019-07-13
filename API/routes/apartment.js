@@ -42,21 +42,24 @@ module.exports = function (app) {
     // if types are constants, better to not use this api, hardcode the types somewhere instead, 
     // as it is quite expensive to loop through all apartments
     app.get("/getAllTypes", (req,res)=>{
-        apartment.find({})
-        .then((apts)=>{
-            let types = apts.map((apt)=>apt.type);
-            types = [... new Set(types)];
-            res.status(200).send({
-                error: false,
-                types:types
-            })
-        })
-        .catch((error)=>{
-            res.status(400).send({
-                error: true,
-                message: error
-            })
-        })
+        res.status(200).send(['Type 1', 'Type 2', 'Type 3', 'Type 5', 'Type 6', 'Type 7',
+        'Type 8', 'Type 9', 'Type 10', 'Type 11', 'Type A', 'Type B', 'Type C',
+        'Type D', 'Type E', 'Type F', 'Type G']);
+        // apartment.find({})
+        // .then((apts)=>{
+        //     let types = apts.map((apt)=>apt.type);
+        //     types = [... new Set(types)];
+        //     res.status(200).send({
+        //         error: false,
+        //         types:types
+        //     })
+        // })
+        // .catch((error)=>{
+        //     res.status(400).send({
+        //         error: true,
+        //         message: error
+        //     })
+        // })
     })
 
     // get all available floors given body{type: string}
@@ -131,7 +134,7 @@ module.exports = function (app) {
         })
     })
 
-    // get all empty apartment given a floor, body:{floorNum: int, type: string}
+    // get all empty apartment given a type, body:{floorNum: int, type: string}
     app.get("/AllEmptyApts/:type", (req, res)=>{
         apartment.find(
             { $and:[{rentedBy:null},{owner:null},{type:req.params.type}] }

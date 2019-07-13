@@ -13,7 +13,9 @@ export class RoomlayoutComponent implements OnInit {
   constructor(private roomService: RoomService) { }
 
   ngOnInit() {
-    this.types = ['Type 1', 'Type 2', 'Type 3', 'Type 5', 'Type 6', 'Type 7', 'Type 8', 'Type 9', 'Type 10'];
+    this.roomService.getAvailableTypes().subscribe(res => {
+      this.types = res;
+    });
   }
 
 }
