@@ -1,0 +1,15 @@
+<div>
+  <img src={{imgPath}} alt='image'>
+  <div *ngIf="availableUnits.length > 0">
+    <p>
+      Available units are:
+    </p>
+    <p *ngFor="let unit of availableUnits">
+      {{ unit.unitNumber }}
+    </p>>
+  </div>
+  <p *ngIf="availableUnits.length == 0">
+    Sorry, there is currently no available units for this type.
+  </p>
+  <hr>
+</div>

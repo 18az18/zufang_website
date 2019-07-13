@@ -25,6 +25,7 @@ import { PicRollerComponent } from './components/pic-roller/pic-roller.component
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { AccountHeaderComponent } from './components/account-header/account-header.component';
 import { AccountFormComponent } from './components/account-form/account-form.component';
+import { RoomDisplayComponent } from './components/room-display/room-display.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { AccountFormComponent } from './components/account-form/account-form.com
     PicRollerComponent,
     ContactusComponent,
     AccountHeaderComponent,
-    AccountFormComponent
+    AccountFormComponent,
+    RoomDisplayComponent
   ],
   imports: [
     BrowserModule,

@@ -35,13 +35,5 @@ export class FormService {
     return ;
   }
 
-  getApartmentTypes(): Observable<any> {
-    const typeUrl = this.url + 'getAvailableTypes/';
-    return this.http.get(typeUrl, httpOptions);
-  }
 
-  getAvailableFloors(type: string): Observable<any> {
-    const floorUrl = this.url + 'getAvailableFloors/' + type;
-    return this.http.get(floorUrl, httpOptions);
-  }
 }
