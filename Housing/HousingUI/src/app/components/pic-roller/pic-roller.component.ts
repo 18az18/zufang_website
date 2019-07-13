@@ -9,7 +9,7 @@ export class PicRollerComponent implements OnInit {
   currentPic = 0;
   constructor() {
   setInterval(() => {
-      const id = (this.currentPic + 1) % 3;
+      const id = (this.currentPic + 1) % 5;
       this.currentPic = id;
     }, 3000);
   }
