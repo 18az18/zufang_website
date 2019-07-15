@@ -12,7 +12,7 @@
               </div> -->
               <div *ngIf="contactForm.get('name').errors &&
                         (contactForm.get('name').touched) || contactForm.get('name').dirty">
-                <div *ngIf="!!contactForm.get('name').errors?.required">
+                <div class="redSign" *ngIf="!!contactForm.get('name').errors?.required">
                     Name is required
                 </div>
               </div>
@@ -25,10 +25,10 @@
               </div> -->
               <div *ngIf="contactForm.get('email').errors &&
                         (contactForm.get('email').touched) || contactForm.get('email').dirty">
-                <div *ngIf="!!contactForm.get('email').errors?.required">
+                <div  class="redSign" *ngIf="!!contactForm.get('email').errors?.required">
                     Email is required
                 </div>
-                <div *ngIf="!!contactForm.get('email').errors?.email">
+                <div class="redSign" *ngIf="!!contactForm.get('email').errors?.email">
                     Email is invalid
                 </div>
               </div>
@@ -43,7 +43,7 @@
               </textarea>
               <div *ngIf="contactForm.get('message').errors &&
                         (contactForm.get('message').touched) || contactForm.get('message').dirty">
-                <div *ngIf="!!contactForm.get('message').errors?.required">
+                <div  class="redSign" *ngIf="!!contactForm.get('message').errors?.required">
                     Messages can not be empty
                 </div>
               </div>
