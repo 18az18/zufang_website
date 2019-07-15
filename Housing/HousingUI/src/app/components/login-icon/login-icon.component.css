@@ -5,3 +5,6 @@
     position: relative;left: 845px;top:165px;color: #7FEE76;font-size: 15px;
     background-color: transparent;border: none;
 }
+*:focus{
+    border:none;
+}

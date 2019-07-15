@@ -1,0 +1,15 @@
+.layout{
+    width:900px;margin:0 auto;
+    margin-top: 60px;display: flex;
+}
+.layout img{
+    width:600px;
+}
+.layout .desp{
+    width:300px; padding-left:40px;
+    /* background-color: red; */
+}
+.layout .desp p{
+    color:white;
+    font-size: 20px;
+}
