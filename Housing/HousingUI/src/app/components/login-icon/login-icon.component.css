@@ -1,0 +1,7 @@
+.loginBtn{
+    width:900px;margin:0 auto;position: relative;z-index: 10;
+}
+.loginBtn button{
+    position: relative;left: 845px;top:165px;color: #7FEE76;font-size: 15px;
+    background-color: transparent;border: none;
+}
