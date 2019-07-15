@@ -25,10 +25,19 @@
     min-width: 333px;
 }
 .c p{
-    font-size: 16px;margin-top: 210px;
+    font-size: 16px;margin-top: 78px;
 }
 .d{
-    background-color: #bfbfbf;
+    background-color: #bfbfbf;text-align: center;
+}
+.d img{
+    width:50px;height:50px;margin-top: 120px;
+}
+.e img{
+    width:50px;height:50px;margin-top: 120px;
+}
+.f img{
+    width:50px;height:50px;margin-top: 120px;
 }
 .e{
     background-color: rgb(245, 96, 96);

@@ -1,9 +1,9 @@
-<div>
+<div class="wholeSignIn">
     <h3>Sign In</h3>
     <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
-        <div>
+        <div class="a b">
             <label>
-                User name
+                <p>User name</p>
                 <input type="text" formControlName="userName" name="userName" required>
                 <!-- <div [hidden]="Name.valid || Name.pristine" class="alert alert-danger">
                         Name is required
@@ -16,9 +16,9 @@
                 </div> -->
             </label>
         </div>
-        <div>
+        <div class="a">
             <label>
-                Password
+                <p>Password</p>
                 <input type="password" formControlName="password" name="password" required>
                 <!-- <div [hidden]="Name.valid || Name.pristine" class="alert alert-danger">
                         Name is required
@@ -31,8 +31,8 @@
                 </div> -->
             </label>
         </div>
-        <button type="submit" [disabled]="!loginForm.valid">Sign In</button>
-        <button type="button" (click)="signup()">Click here to sign up</button>
+        <button class="signInBtn" type="submit" [disabled]="!loginForm.valid">Sign In</button>
+        <button class="signUpBtn" type="button" (click)="signup()">Click here to sign up</button>
       </form>
   </div>
 

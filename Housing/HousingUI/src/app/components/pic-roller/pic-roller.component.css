@@ -7,6 +7,8 @@
 
 .bannerContainer{
     background-color: white;min-width: 900px;
+    margin-bottom: 0px;
+    padding-bottom:100px;
     
 }
 .bannerContainer .bannerPicList{
