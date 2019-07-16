@@ -5,8 +5,8 @@
 const EmailURL = 'http://localhost:4200/';
 
 
-const {    User} = require('../models/user');
-const {    ObjectID} = require('mongodb');
+const {User} = require('../models/user');
+const {ObjectID} = require('mongodb');
 const {authenticateManager, authenticateAdmin, authenticateUser, authenticateSelfOrManager} = require("./authentication");
 const {transporter} = require('./email');
 const randomstring = require('randomstring');
@@ -47,9 +47,9 @@ module.exports = function (app) {
                 transporter.sendMail(mailOptions, function(error, info){
                     if(error){
                         return console.log(error);
-                    }
-                    console.log('email sent: ' + info.response);
-                    res.status(200).send({
+                    } else{
+                        console.log('email sent');
+                        res.status(200).send({
                         error: false,
                         user: {
                             emailVerified: false,
@@ -60,7 +60,8 @@ module.exports = function (app) {
                             email: user.email,
                             phoneNumber: user.phoneNumber,
                         }
-                    });
+                        });
+                    } 
                 });
                 
             })
