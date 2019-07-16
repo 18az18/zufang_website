@@ -46,7 +46,8 @@ module.exports = function (app) {
                 };
                 transporter.sendMail(mailOptions, function(error, info){
                     if(error){
-                        return console.log(error);
+                        console.log(error);
+                        res.status(400).send({error:true, message:"fail to send email to given address, please contact the manager." })
                     } else{
                         console.log('email sent');
                         res.status(200).send({
