@@ -10,11 +10,14 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class SignupComponent implements OnInit {
 
+  showMessage: boolean;
+  errMessage: string;
   signupForm: FormGroup;
 
   constructor(private fb: FormBuilder, private router: Router, private userService: UserService) { }
 
   ngOnInit() {
+    this.showMessage = false;
     this.signupForm = this.fb.group({
       userName: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(8)]],
@@ -32,8 +35,12 @@ export class SignupComponent implements OnInit {
     console.log('Phone number: ' + phoneNumber);
     this.userService.signup(username, password, email, phoneNumber).subscribe(res => {
       console.log(res);
+      this.signupForm.reset();
     }, err => {
       console.log(err);
+      console.log(err.error.message);
+      this.errMessage = err.error.message;
+      this.showMessage = true;
     });
   }
 

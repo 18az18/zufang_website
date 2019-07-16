@@ -22,9 +22,9 @@ export class UserService {
 
   constructor(private router: Router, private http: HttpClient) { }
 
-  login(username: string, password: string): Observable<any> {
+  login(name: string, password: string): Observable<any> {
     const loginUrl = this.url + 'login';
-    return this.http.post(loginUrl, {username, password}, httpOptions).pipe(tap(res => {
+    return this.http.post(loginUrl, {name, password}, httpOptions).pipe(tap(res => {
       this.userUpdated.next(res);
     }));
   }

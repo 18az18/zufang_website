@@ -5,31 +5,32 @@
             <label>
                 <p>User name</p>
                 <input type="text" formControlName="userName" name="userName" required>
-                <div [hidden]="Name.valid || Name.pristine" class="alert alert-danger">
-                        Name is required
-                </div>
-                <!-- <div *ngIf="reservationForm.get('firstName').errors &&
-                          (reservationForm.get('firstName').touched) || reservationForm.get('firstName').dirty">
-                  <div *ngIf="reservationForm.get('firstName').errors?.required">
-                      First Name is required
+                <!-- Error message for empty user name field -->
+                <div *ngIf="loginForm.get('userName').errors &&
+                          (loginForm.get('userName').touched) || loginForm.get('userName').dirty">
+                  <div *ngIf="loginForm.get('userName').errors?.required">
+                    User Name is required
                   </div>
-                </div> -->
+                </div>
             </label>
         </div>
         <div class="a">
             <label>
                 <p>Password</p>
                 <input type="password" formControlName="password" name="password" required>
-                <!-- <div [hidden]="Name.valid || Name.pristine" class="alert alert-danger">
-                        Password is required
-                </div> -->
-                <!-- <div *ngIf="reservationForm.get('lastName').errors &&
-                          (reservationForm.get('lastName').touched) || reservationForm.get('lastName').dirty">
-                  <div *ngIf="reservationForm.get('lastName').errors?.required">
-                      Last Name is required
+                <!-- Error message for empty password field -->
+                <div *ngIf="loginForm.get('password').errors &&
+                          (loginForm.get('password').touched) || loginForm.get('password').dirty">
+                  <div *ngIf="loginForm.get('password').errors?.required">
+                    Password is required
                   </div>
-                </div> -->
+                </div>
             </label>
+        </div>
+        <div *ngIf="showError">
+          <p>
+            {{ errMessage }}
+          </p>
         </div>
         <button class="signInBtn" type="submit" [disabled]="!loginForm.valid">Sign In</button>
         <button class="signUpBtn" type="button" (click)="signup()">Click here to sign up</button>

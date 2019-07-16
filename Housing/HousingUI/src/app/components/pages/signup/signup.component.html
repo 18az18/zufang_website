@@ -4,38 +4,43 @@
     <form (ngSubmit)="onSubmit()" [formGroup]="signupForm">
         <div class="form-group row a b">
           <label for="username" >User name</label>
-          <!-- class="col-1 col-form-label" -->
-          <!-- <div class="col-sm-8"> -->
             <input type="text" id="username" formControlName="userName" name="userName" class="form-control" required>
-          <!-- </div> -->
-          <!-- <div [hidden]="Name.valid || Name.pristine" class="alert alert-danger">
-                  Name is required
-          </div> -->
+            <!-- Error message for empty user name field -->
+            <div *ngIf="signupForm.get('userName').errors &&
+            (signupForm.get('userName').touched) || signupForm.get('userName').dirty">
+              <div *ngIf="signupForm.get('userName').errors?.required">
+                User Name is required
+              </div>
+            </div>
+
         </div>
         <div class="form-group row a">
           <label for="password" >Password</label>
-          <!-- class="col-sm-2 col-form-label" -->
-          <!-- <div class="col-sm-7"> -->
             <input type="password" id="password" formControlName="password" name="password" class="form-control" required>
-          <!-- </div> -->
-          <!-- <div [hidden]="Name.valid || Name.pristine" class="alert alert-danger">
-                  Name is required
-          </div> -->
+          <!-- Error message for password -->
+          <div *ngIf="signupForm.get('password').errors &&
+          (signupForm.get('password').touched) || signupForm.get('password').dirty">
+            <!-- Error message for empty password field -->
+            <div *ngIf="!!signupForm.get('password').errors?.required">
+                Password is required.
+            </div>
+            <!-- Error message for password not having at least 8 characters long-->
+            <div *ngIf="!!signupForm.get('password').errors?.minlength">
+                Password is required to have at least 8 characters.
+            </div>
+            </div>
         </div>
         <div class="form-group row a">
           <label for="email">Email</label>
-          <!-- class="col-sm-1 col-form-label" -->
-          <!-- <div class="col-sm-8"> -->
             <input type="email" id="email" formControlName="email" placeholder="Email" class="form-control" required>
-          <!-- </div> -->
-          <!-- <div [hidden]="Email.valid || Email.pristine" class="alert alert-danger">
-                  Email is required
-          </div> -->
+          <!-- Error messages for email field -->
           <div *ngIf="signupForm.get('email').errors &&
                     (signupForm.get('email').touched) || signupForm.get('email').dirty">
+            <!-- Error messages for empty email field -->
             <div *ngIf="!!signupForm.get('email').errors?.required">
                 Email is required
             </div>
+            <!-- Error messages for invalid email input -->
             <div *ngIf="!!signupForm.get('email').errors?.email">
                 Email is invalid
             </div>
@@ -50,6 +55,12 @@
             <!-- <div [hidden]="Name.valid || Name.pristine" class="alert alert-danger">
                     Name is required
             </div> -->
+        </div>
+
+        <div *ngIf="showMessage">
+          <p>
+            {{ errMessage }}
+          </p>
         </div>
         <div class="form-group row a">
           <div >

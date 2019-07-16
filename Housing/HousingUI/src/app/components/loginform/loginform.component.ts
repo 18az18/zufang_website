@@ -11,10 +11,13 @@ import { Router } from '@angular/router';
 export class LoginformComponent implements OnInit {
 
   loginForm: FormGroup;
+  errMessage: string;
+  showError: boolean;
 
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
+    this.showError = false;
     this.loginForm = this.fb.group({
       userName: ['', Validators.required],
       password: ['', Validators.required]
@@ -31,6 +34,8 @@ export class LoginformComponent implements OnInit {
       this.router.navigate(['']);
     }, error => {
       console.log(error.error.message);
+      this.errMessage = error.error.message;
+      this.showError = true;
     });
   }
 

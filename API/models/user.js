@@ -65,8 +65,10 @@ UserSchema.statics.findByNamePassword = function(name, password) {
         return new Promise((resolve, reject) => {
             bcrypt.compare(password, user.password, (error, result) => {
                 if (result) {
+                    console.log("successfully signed in IN user schema");
                     resolve(user);
                 } else {
+                    console.log("faild to sign in in user schema");
                     reject();
                 }
             })

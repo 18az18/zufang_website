@@ -129,14 +129,15 @@ module.exports = function (app) {
         (req, res) => {
             const name = req.body.name;
             const password = req.body.password;
-
+            console.log(name);
+            console.log(password);
             User.findByNamePassword(name, password).then((user) => {
                 if (!user) {
                     res.status(401).send({error:true, message: 'incorrect password or username'});
                 } else {
-                    req.session.user = user._id;
                     if(user.emailVerified){
                         console.log("user: " + req.session.user + " has logged in");
+                        req.session.user = user._id;
                         res.status(200).send({
                             usertype: user.role,
                             username: user.name,
