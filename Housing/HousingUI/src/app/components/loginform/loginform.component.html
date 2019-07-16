@@ -5,9 +5,9 @@
             <label>
                 <p>User name</p>
                 <input type="text" formControlName="userName" name="userName" required>
-                <!-- <div [hidden]="Name.valid || Name.pristine" class="alert alert-danger">
+                <div [hidden]="Name.valid || Name.pristine" class="alert alert-danger">
                         Name is required
-                </div> -->
+                </div>
                 <!-- <div *ngIf="reservationForm.get('firstName').errors &&
                           (reservationForm.get('firstName').touched) || reservationForm.get('firstName').dirty">
                   <div *ngIf="reservationForm.get('firstName').errors?.required">
@@ -21,7 +21,7 @@
                 <p>Password</p>
                 <input type="password" formControlName="password" name="password" required>
                 <!-- <div [hidden]="Name.valid || Name.pristine" class="alert alert-danger">
-                        Name is required
+                        Password is required
                 </div> -->
                 <!-- <div *ngIf="reservationForm.get('lastName').errors &&
                           (reservationForm.get('lastName').touched) || reservationForm.get('lastName').dirty">
