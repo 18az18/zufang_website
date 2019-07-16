@@ -29,7 +29,7 @@ module.exports = function (app) {
                                 res.status(200).send({
                                     error: true,
                                     message: "email wasnt successfully send"
-                                })
+                                });
                             }
                             console.log('Message sent: ' + info.response);
                             res.status(200).send({
