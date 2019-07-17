@@ -46,9 +46,8 @@ module.exports = function (app) {
                 };
                 transporter.sendMail(mailOptions, function(error, info){
                     if(error){
-                        console.log(error);
-                        res.status(400).send({error:true, message:"email wasnt successfully send" });
-                    } else{
+                        return console.log(error);
+                    }
                         console.log('email sent');
                         res.status(200).send({
                         error: false,
@@ -62,7 +61,6 @@ module.exports = function (app) {
                             phoneNumber: user.phoneNumber,
                         }
                         });
-                    } 
                 });
                 
             })
@@ -138,8 +136,8 @@ module.exports = function (app) {
                     res.status(401).send({error:true, message: 'incorrect password or username'});
                 } else {
                     if(user.emailVerified){
-                        console.log("user: " + req.session.user + " has logged in");
                         req.session.user = user._id;
+                        console.log("user: " + req.session.user + " has logged in");
                         res.status(200).send({
                             usertype: user.role,
                             username: user.name,
@@ -291,8 +289,7 @@ module.exports = function (app) {
         };
         transporter.sendMail(mailOptions, function(error, info){
             if(error){
-                res.status(400).send({error:true, message:"email wasnt successfully send" });
-                console.log(error);
+                return console.log(error);
             }
             console.log('email sent:' + info.response);
             res.status(200).send({

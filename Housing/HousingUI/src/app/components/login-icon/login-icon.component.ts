@@ -34,6 +34,7 @@ export class LoginIconComponent implements OnInit, OnDestroy {
   getInitialUser() {
     this.userSerivce.getInitialUser().subscribe(res => {
       this.loggedIn = res.user;
+      console.log(res);
     }, err => {
       this.loggedIn = null;
     });
