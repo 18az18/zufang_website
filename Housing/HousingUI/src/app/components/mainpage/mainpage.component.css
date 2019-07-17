@@ -119,3 +119,36 @@
 .slider img{
     min-width: 100%;
 }
+
+
+
+.x{
+    width:100%;background-color: white;padding-top: 60px;padding-bottom: 100px;
+}
+.xw{
+    width:900px;margin:0 auto;display: flex;position: relative;
+}
+.x .ic{
+    width:160px;margin:0 !important;
+    height:auto;
+}
+.x .ic0{
+    margin-left: 63px;
+}
+.x .ic2{
+    margin-left: 282px;
+}
+.x div{
+    text-align:center;
+}
+.x h6{
+    font-size:18px;width:248px;text-align:center;
+    color:#182D45;font-weight: 400;
+}
+.x p{
+    font-size: 15px;width:248px;text-align:center;
+    color:#182D45;
+}
+.x .line{
+    position: absolute;top: 54px;left:114px;width:305px;
+}
