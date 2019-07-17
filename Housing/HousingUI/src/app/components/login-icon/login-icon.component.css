@@ -8,6 +8,11 @@
 *:focus {
     outline: none;
 }
+.dropDownWhole{
+    position: absolute;
+    will-change: transform;
+    transform: translate(845px,198px);
+}
 .dropDownWhole hr{
     margin: 0 20%;width:60%;
 }
