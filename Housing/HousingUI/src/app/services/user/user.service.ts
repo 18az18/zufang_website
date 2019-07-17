@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -16,7 +16,7 @@ const httpOptions = {
 })
 export class UserService {
 
-  userUpdated = new Subject<any>();
+  userUpdated = new BehaviorSubject<any>(null);
 
   private url = 'http://localhost:3000/';
 

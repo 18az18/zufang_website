@@ -49,7 +49,7 @@ export class LoginIconComponent implements OnInit, OnDestroy {
 
   logout() {
     this.userSerivce.logout().subscribe(res => {
-      if (this.router.url === 'signin') {
+      if (this.router.url === 'account') {
         this.router.navigate(['']);
       }
     });

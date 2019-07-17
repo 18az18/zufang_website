@@ -47,21 +47,20 @@ module.exports = function (app) {
                 transporter.sendMail(mailOptions, function(error, info){
                     if(error){
                         return console.log(error);
-                    } else{
-                        console.log('email sent');
-                        res.status(200).send({
-                        error: false,
-                        user: {
-                            emailVerified: false,
-                            subscribed: false,
-                            role: user.role,
-                            _id: user._id,
-                            name: user.name,
-                            email: user.email,
-                            phoneNumber: user.phoneNumber,
-                        }
-                        });
-                    } 
+                    }
+                    console.log('email sent');
+                    res.status(200).send({
+                    error: false,
+                    user: {
+                        emailVerified: false,
+                        subscribed: false,
+                        role: user.role,
+                        _id: user._id,
+                        name: user.name,
+                        email: user.email,
+                        phoneNumber: user.phoneNumber,
+                    }
+                    });
                 });
                 
             })
