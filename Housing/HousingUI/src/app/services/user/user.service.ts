@@ -42,6 +42,7 @@ export class UserService {
 
   logout() {
     const logoutUrl = this.url + 'logout';
+    console.log('user logged out');
     return this.http.delete(logoutUrl, httpOptions).pipe(tap(res => {
       this.userUpdated.next(null);
     }));
