@@ -1,41 +1,49 @@
 
-<div>
-    <app-contactform-paragraph></app-contactform-paragraph>
+<div class="a">
+    <!-- <app-contactform-paragraph></app-contactform-paragraph> -->
     <form (ngSubmit)="onSubmit()" [formGroup]="accountForm">
-      <div>
-        <label for="firstName">First Name</label>
-        <input type="text" formControlName="firstName" name="firstName" placeholder="">
-      </div>
-      <div>
-        <label for="lastName">Last Name</label>
-        <input type="text" formControlName="lastName" name="lastName" placeholder="">
-      </div>
-      <div>
-        <label for="contactEmail">Contact Email</label>
-        <input type="email" formControlName="email" name="contactEmail" placeholder="">
-        <!-- <div [hidden]="Email.valid || Email.pristine" class="alert alert-danger">
-                Email is required
-        </div> -->
-        <div *ngIf="accountForm.get('email').errors &&
-                  (accountForm.get('email').touched) || accountForm.get('email').dirty">
-          <div *ngIf="!!accountForm.get('email').errors?.email">
-              Email is in invalid form
-          </div>
-        </div>
-      </div>
-      <div>
-          <label for="phoneNumber">Phone</label>
-          <input type="text" formControlName="phone" name="phoneNumber" placeholder="">
-          <!-- <div [hidden]="Email.valid || Email.pristine" class="alert alert-danger">
-                  Email is required
-          </div> -->
-          <!-- <div *ngIf="accountForm.get('phone').errors &&
-                    (accountForm.get('phone').touched) || accountForm.get('phone').dirty">
-            <div *ngIf="!!accountForm.get('phone').errors?.email">
-                Email is in invalid form
+      <div class="b">
+          <div>
+              <label for="firstName">First Name</label><br>
+              <input type="text" formControlName="firstName" name="firstName" placeholder="">
             </div>
-          </div> -->
-        </div>
-      <button type="submit" [disabled]="!accountForm.valid">Update Info</button>
+            <div>
+              <label for="lastName">Last Name</label><br>
+              <input type="text" formControlName="lastName" name="lastName" placeholder="">
+            </div>
+      </div>
+     
+      <div class="b">
+          <div>
+              <label for="contactEmail">Contact Email</label>
+              <input type="email" formControlName="email" name="contactEmail" placeholder="">
+              <!-- <div [hidden]="Email.valid || Email.pristine" class="alert alert-danger">
+                      Email is required
+              </div> -->
+              <div *ngIf="accountForm.get('email').errors &&
+                        (accountForm.get('email').touched) || accountForm.get('email').dirty">
+                <div *ngIf="!!accountForm.get('email').errors?.email">
+                    Email is in invalid form
+                </div>
+              </div>
+            </div>
+
+            <div>
+                <label for="phoneNumber">Phone</label>
+                <input type="text" formControlName="phone" name="phoneNumber" placeholder="">
+                <!-- <div [hidden]="Email.valid || Email.pristine" class="alert alert-danger">
+                        Email is required
+                </div> -->
+                <!-- <div *ngIf="accountForm.get('phone').errors &&
+                          (accountForm.get('phone').touched) || accountForm.get('phone').dirty">
+                  <div *ngIf="!!accountForm.get('phone').errors?.email">
+                      Email is in invalid form
+                  </div>
+                </div> -->
+              </div>
+      </div>
+  
+     
+      <button class="upInfoBtn" type="submit" [disabled]="!accountForm.valid">Update Info</button>
     </form>
   </div>

@@ -1,10 +1,20 @@
 .loginBtn{
     width:900px;margin:0 auto;position: relative;z-index: 10;
 }
-.loginBtn button{
+.loginBtn .greBtn{
     position: relative;left: 845px;top:165px;color: #7FEE76;font-size: 15px;
     background-color: transparent;border: none;
 }
 *:focus {
     outline: none;
+}
+.dropDownWhole hr{
+    margin: 0 20%;width:60%;
+}
+.dropDownItem{
+    background-color: white;
+    border:none;
+    /* border-bottom: 1px solid rgb(235,235,235); */
+    width:100%;
+    text-align: center;height:40px;
 }

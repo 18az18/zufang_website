@@ -1,6 +1,7 @@
 .layout{
     width:900px;margin:0 auto;
     margin-top: 60px;display: flex;
+    margin-bottom: 100px;
 }
 .layout img{
     width:600px;

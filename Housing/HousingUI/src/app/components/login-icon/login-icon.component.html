@@ -1,5 +1,5 @@
 <div *ngIf="!loggedIn" class="loginBtn">
-    <button (click)="login()">Log In</button>
+    <button class="greBtn" (click)="login()">Log In</button>
 </div>
 
 <!-- <div *ngIf="loggedIn">
@@ -9,13 +9,14 @@
 </div> -->
 
 
-<div class="row" *ngIf="loggedIn">
+<div class="row loginBtn" *ngIf="loggedIn">
   <div class="col">
     <div ngbDropdown class="d-inline-block">
-      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>User</button>
-      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-        <button ngbDropdownItem (click)="checkProfile()">My Account</button>
-        <button ngbDropdownItem (click)="logout()">Log Out</button>
+      <button class="btn btn-outline-primary greBtn" id="dropdownBasic1" ngbDropdownToggle>User</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropDownWhole">
+        <button class="dropDownItem" ngbDropdownItem (click)="checkProfile()">My Account</button>
+        <hr>
+        <button class="dropDownItem" ngbDropdownItem (click)="logout()">Log Out</button>
       </div>
     </div>
   </div>
