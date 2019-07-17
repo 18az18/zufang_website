@@ -8,7 +8,7 @@
                 <!-- Error message for empty user name field -->
                 <div *ngIf="loginForm.get('userName').errors &&
                           (loginForm.get('userName').touched) || loginForm.get('userName').dirty">
-                  <div *ngIf="loginForm.get('userName').errors?.required">
+                  <div class="errorMsg" *ngIf="loginForm.get('userName').errors?.required">
                     User Name is required
                   </div>
                 </div>
@@ -21,7 +21,7 @@
                 <!-- Error message for empty password field -->
                 <div *ngIf="loginForm.get('password').errors &&
                           (loginForm.get('password').touched) || loginForm.get('password').dirty">
-                  <div *ngIf="loginForm.get('password').errors?.required">
+                  <div class="errorMsg"  *ngIf="loginForm.get('password').errors?.required">
                     Password is required
                   </div>
                 </div>

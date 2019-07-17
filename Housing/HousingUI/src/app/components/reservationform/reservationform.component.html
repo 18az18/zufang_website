@@ -11,7 +11,7 @@
                 </div> -->
                 <div *ngIf="reservationForm.get('firstName').errors &&
                           (reservationForm.get('firstName').touched) || reservationForm.get('firstName').dirty">
-                  <div *ngIf="!!reservationForm.get('firstName').errors?.required">
+                  <div class="errorMsg" *ngIf="!!reservationForm.get('firstName').errors?.required">
                       First Name is required
                   </div>
                 </div>
@@ -26,7 +26,7 @@
                 </div> -->
                 <div *ngIf="reservationForm.get('lastName').errors &&
                           (reservationForm.get('lastName').touched) || reservationForm.get('lastName').dirty">
-                  <div *ngIf="!!reservationForm.get('lastName').errors?.required">
+                  <div  class="errorMsg"  *ngIf="!!reservationForm.get('lastName').errors?.required">
                       Last Name is required
                   </div>
                 </div>
@@ -44,10 +44,10 @@
               </div> -->
               <div *ngIf="reservationForm.get('email').errors &&
                         (reservationForm.get('email').touched) || reservationForm.get('email').dirty">
-                <div *ngIf="!!reservationForm.get('email').errors?.required">
+                <div  class="errorMsg" *ngIf="!!reservationForm.get('email').errors?.required">
                     Email is required
                 </div>
-                <div *ngIf="!!reservationForm.get('email').errors?.email">
+                <div  class="errorMsg" *ngIf="!!reservationForm.get('email').errors?.email">
                     Email is invalid
                 </div>
               </div>
@@ -62,7 +62,7 @@
                   </div> -->
                   <div *ngIf="reservationForm.get('phone').errors &&
                             (reservationForm.get('phone').touched) || reservationForm.get('phone').dirty">
-                    <div *ngIf="!!reservationForm.get('phone').errors?.pattern">
+                    <div   class="errorMsg" *ngIf="!!reservationForm.get('phone').errors?.pattern">
                         Phone number is invalid
                     </div>
                   </div>

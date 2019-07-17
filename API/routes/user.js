@@ -46,21 +46,23 @@ module.exports = function (app) {
                 };
                 transporter.sendMail(mailOptions, function(error, info){
                     if(error){
-                        return console.log(error);
-                    }
-                    console.log('email sent');
-                    res.status(200).send({
-                    error: false,
-                    user: {
-                        emailVerified: false,
-                        subscribed: false,
-                        role: user.role,
-                        _id: user._id,
-                        name: user.name,
-                        email: user.email,
-                        phoneNumber: user.phoneNumber,
-                    }
-                    });
+                        console.log(error);
+                        res.status(400).send({error:true, message:"email wasnt successfully send" });
+                    } else{
+                        console.log('email sent');
+                        res.status(200).send({
+                        error: false,
+                        user: {
+                            emailVerified: false,
+                            subscribed: false,
+                            role: user.role,
+                            _id: user._id,
+                            name: user.name,
+                            email: user.email,
+                            phoneNumber: user.phoneNumber,
+                        }
+                        });
+                    } 
                 });
                 
             })
@@ -289,7 +291,8 @@ module.exports = function (app) {
         };
         transporter.sendMail(mailOptions, function(error, info){
             if(error){
-                return console.log(error);
+                res.status(400).send({error:true, message:"email wasnt successfully send" });
+                console.log(error);
             }
             console.log('email sent:' + info.response);
             res.status(200).send({

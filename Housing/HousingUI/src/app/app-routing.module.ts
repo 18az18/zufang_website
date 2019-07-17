@@ -7,6 +7,7 @@ import { ReservationComponent } from './components/pages/reservation/reservation
 import { LoginComponent } from './components/pages/login/login.component';
 import { AccountComponent } from './components/pages/account/account.component';
 import { SignupComponent } from './components/pages/signup/signup.component';
+import { ProfileGuard } from './guards/profile/profile.guard';
 
 const routes: Routes = [
   { path: '', component: MainpageComponent},
@@ -14,7 +15,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'roomlayout', component: RoomlayoutComponent},
   { path: 'contact', component: ContactComponent},
-  { path: 'account', component: AccountComponent},
+  { path: 'account', component: AccountComponent, canActivate: [ProfileGuard]},
   { path: 'signup', component: SignupComponent }
 ];
 

@@ -52,3 +52,6 @@
 .c:hover{
     background-color: rgba(55, 59, 77, 0.8);transition: all 0.3s ease;
 }
+.errorMsg{
+    color:red;line-height: 20px;font-weight: 400;margin-top: 5px;
+}

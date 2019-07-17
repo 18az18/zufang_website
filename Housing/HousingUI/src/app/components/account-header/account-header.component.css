@@ -1,0 +1,20 @@
+.myAccount{
+    width:900px;margin:0 auto;margin-top: 60px;
+    padding-left: 365px;
+    /* background-color: red; */
+}
+.myAccount h1{
+    font-size:35px;color:white;
+}
+.myAccount .desp{
+    font-size: 16px;color:white;margin-top: 20px;
+}
+.myAccount .h{
+   height:1px;width:100%;background-color: black;margin-top: 40px;
+}
+.mt{
+    margin-top: 24px;margin-bottom: 13px;
+}
+.myAccount .d{
+   color:white;font-size:16px;
+}

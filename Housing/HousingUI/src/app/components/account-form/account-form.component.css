@@ -1,0 +1,32 @@
+.a{
+    width:900px;margin:0 auto;
+    /* background-color: red; */
+    padding-left:365px;
+    position: relative;
+    z-index: 30;
+    margin-top: 60px;
+}
+
+.b{
+    display: flex;
+}
+.b div{
+    width:224px;margin-bottom:24px;
+}
+.b div label{
+    color:white;font-size: 16px;line-height: 40px;height:40px;
+}
+.b div input{
+    line-height: 30px;width:200px;margin-right:24px;
+}
+.upInfoBtn{
+    width:200px;height:36px !important;
+    background-color: rgb(14, 168, 112);
+    opacity:1;font-size: 16px;color:white;
+    border:none;margin-top:20px;
+    margin-bottom: 100px;cursor:pointer;
+}
+.upInfoBtn:hover{
+    background-color: rgb(7, 131, 85);
+    transition: all 0.3s ease;
+}

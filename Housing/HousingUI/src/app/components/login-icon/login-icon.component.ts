@@ -17,8 +17,8 @@ export class LoginIconComponent implements OnInit, OnDestroy {
   constructor(private userSerivce: UserService, private router: Router) { }
 
   ngOnInit() {
-    this.getInitialUser();
     this.getUserUpdateListener();
+    this.getInitialUser();
   }
 
   getUserUpdateListener() {
