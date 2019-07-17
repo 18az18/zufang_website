@@ -8,7 +8,7 @@
             <!-- Error message for empty user name field -->
             <div *ngIf="signupForm.get('userName').errors &&
             (signupForm.get('userName').touched) || signupForm.get('userName').dirty">
-              <div *ngIf="signupForm.get('userName').errors?.required">
+              <div class="errorMsg"  *ngIf="signupForm.get('userName').errors?.required">
                 User Name is required
               </div>
             </div>
@@ -21,7 +21,7 @@
           <div *ngIf="signupForm.get('password').errors &&
           (signupForm.get('password').touched) || signupForm.get('password').dirty">
             <!-- Error message for empty password field -->
-            <div *ngIf="!!signupForm.get('password').errors?.required">
+            <div class="errorMsg"  *ngIf="!!signupForm.get('password').errors?.required">
                 Password is required.
             </div>
             <!-- Error message for password not having at least 8 characters long-->
@@ -37,11 +37,11 @@
           <div *ngIf="signupForm.get('email').errors &&
                     (signupForm.get('email').touched) || signupForm.get('email').dirty">
             <!-- Error messages for empty email field -->
-            <div *ngIf="!!signupForm.get('email').errors?.required">
+            <div class="errorMsg"  *ngIf="!!signupForm.get('email').errors?.required">
                 Email is required
             </div>
             <!-- Error messages for invalid email input -->
-            <div *ngIf="!!signupForm.get('email').errors?.email">
+            <div class="errorMsg"  *ngIf="!!signupForm.get('email').errors?.email">
                 Email is invalid
             </div>
           </div>
