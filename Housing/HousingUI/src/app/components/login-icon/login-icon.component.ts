@@ -14,7 +14,7 @@ export class LoginIconComponent implements OnInit, OnDestroy {
   loggedUser: any;
   private userSub: Subscription;
 
-  constructor(private userSerivce: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.getUserUpdateListener();
@@ -22,7 +22,7 @@ export class LoginIconComponent implements OnInit, OnDestroy {
   }
 
   getUserUpdateListener() {
-    this.userSub = this.userSerivce.getUserUpdateListener()
+    this.userSub = this.userService.getUserUpdateListener()
       .subscribe((loggedIn) => {
         this.loggedIn = loggedIn;
       });
@@ -32,9 +32,10 @@ export class LoginIconComponent implements OnInit, OnDestroy {
   }
 
   getInitialUser() {
-    this.userSerivce.getInitialUser().subscribe(res => {
+    this.userService.getInitialUser().subscribe(res => {
       this.loggedIn = res.user;
       console.log(res);
+      this.userService.setUserUpdateListener(res.user);
     }, err => {
       this.loggedIn = null;
     });
@@ -49,7 +50,7 @@ export class LoginIconComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-    this.userSerivce.logout().subscribe(res => {
+    this.userService.logout().subscribe(res => {
       if (this.router.url === 'account') {
         this.router.navigate(['']);
       }

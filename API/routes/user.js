@@ -19,7 +19,7 @@ module.exports = function (app) {
     app.post('/signup',
         (req, res) => {
             const user = new User({
-                name: req.body.name,
+                username: req.body.username,
                 email: req.body.email,
                 password: req.body.password,
                 phoneNumber: req.body.phoneNumber,
@@ -127,11 +127,11 @@ module.exports = function (app) {
     // request body: {name:..., password:...}
     app.post('/login',
         (req, res) => {
-            const name = req.body.name;
+            const username = req.body.username;
             const password = req.body.password;
-            console.log(name);
+            console.log(username);
             console.log(password);
-            User.findByNamePassword(name, password).then((user) => {
+            User.findByUsernamePassword(username, password).then((user) => {
                 if (!user) {
                     res.status(401).send({error:true, message: 'incorrect password or username'});
                 } else {
@@ -140,8 +140,12 @@ module.exports = function (app) {
                         console.log("user: " + req.session.user + " has logged in");
                         res.status(200).send({
                             usertype: user.role,
-                            username: user.name,
+                            username: user.username,
                             id: user._id,
+                            email: user.email,
+                            firstName: user.firstName,
+                            lastName: user.lastName,
+                            phoneNumber: user.phoneNumber
                         });
                     }else{
                         res.status(401).send({error:true, message:'email unverified'});
@@ -165,7 +169,7 @@ module.exports = function (app) {
         });
 
     // update user
-    // body:{name:" the specific username of the user", email/phonenumer/password/subscribed:"value to replace"}
+    // body:{name:" the specific username of the user", email/phonenumer/password/subscribed/firstName/lastName:"value to replace"}
     app.patch('/userSelfUpdate/:id', authenticateSelfOrManager, (req, res) => {
         const id = req.params.id;
         if (!ObjectID.isValid(id)) {
@@ -179,6 +183,8 @@ module.exports = function (app) {
                 result.email = req.body.email ? req.body.email : result.email;
                 result.phoneNumber = req.body.phoneNumber? req.body.phoneNumber : result.phoneNumber;
                 result.subscribed = req.body.subscribed? req.body.subscribed: result.subscribed;
+                result.firstName = req.body.firstName? req.body.firstName: result.firstName;
+                result.lastName = req.body.lastName? req.body.lastName: result.lastName;
                 result.save().then((result) => {
                     if (!result) {
                         res.status(500).send({error:true, message:"fail to save to database"});
@@ -211,7 +217,7 @@ module.exports = function (app) {
                 result.email = req.body.email ? req.body.email : result.email;
                 result.phoneNumber = req.body.phoneNumber? req.body.phoneNumber : result.phoneNumber;
                 result.subscribed = req.body.subscribed? req.body.subscribed: result.subscribed;
-                result.name = req.body.name? req.body.name:result.name;
+                result.username = req.body.username? req.body.username:result.username;
                 result.emailVerified = req.body.emailVerified? req.body.emailVerified: result.emailVerified;
                 // be extra careful updating the role
                 if (req.body.role 
@@ -236,11 +242,11 @@ module.exports = function (app) {
 
 
     // get the user's info for manager or himself
-    app.get('/user/:name', authenticateSelfOrManager, 
+    app.get('/user/:username', authenticateSelfOrManager, 
         (req, res) => {
-            const name = req.params.name;
+            const username = req.params.username;
             User.findOne({
-                name: name
+                username: username
             }).then((result) => {
                 if (!result) {
                     res.status(404).send();

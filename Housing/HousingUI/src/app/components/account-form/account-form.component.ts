@@ -15,20 +15,32 @@ export class AccountFormComponent implements OnInit {
 
   accountForm: FormGroup;
 
+  userMsg: string;
+
+  showMsg: boolean;
+
   constructor(private fb: FormBuilder, private formService: FormService, private userService: UserService) { }
 
   ngOnInit() {
     this.accountForm = this.fb.group({
-      firstName: [''],
-      lastName: [''],
-      email: [''],
-      phone: ['']
+      firstName: [this.user.firstName],
+      lastName: [this.user.lastName],
+      email: [this.user.email],
+      phone: [this.user.phoneNumber]
     });
-
+    this.showMsg = false;
   }
 
   onSubmit() {
-
+    console.log(this.user);
+    const firstName = this.accountForm.get('firstName').value;
+    const lastName = this.accountForm.get('lastName').value;
+    const email = this.accountForm.get('email').value;
+    const phoneNumber = this.accountForm.get('phone').value;
+    this.userService.updateUserProfile(firstName, lastName, email, null, phoneNumber, null, this.user.id).subscribe(res => {
+      this.showMsg = true;
+      this.userMsg = 'You have successfully updated your profile info';
+    });
   }
 
 }

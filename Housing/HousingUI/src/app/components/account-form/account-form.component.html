@@ -12,7 +12,7 @@
               <input type="text" formControlName="lastName" name="lastName" placeholder="">
             </div>
       </div>
-     
+
       <div class="b">
           <div>
               <label for="contactEmail">Contact Email</label>
@@ -42,8 +42,11 @@
                 </div> -->
               </div>
       </div>
-  
-     
       <button class="upInfoBtn" type="submit" [disabled]="!accountForm.valid">Update Info</button>
+      <div *ngIf="showMsg">
+        <p>
+          {{ userMsg }}
+        </p>
+      </div>
     </form>
   </div>

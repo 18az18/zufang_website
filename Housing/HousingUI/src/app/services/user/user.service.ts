@@ -17,22 +17,22 @@ const httpOptions = {
 })
 export class UserService {
 
-  userUpdated = new BehaviorSubject<any>(null);
+  private userUpdated = new BehaviorSubject<any>(null);
 
   private url = 'http://localhost:3000/';
 
   constructor(private router: Router, private http: HttpClient) { }
 
-  login(name: string, password: string): Observable<any> {
+  login(username: string, password: string): Observable<any> {
     const loginUrl = this.url + 'login';
-    return this.http.post(loginUrl, {name, password}, httpOptions).pipe(tap(res => {
+    return this.http.post(loginUrl, {username, password}, httpOptions).pipe(tap(res => {
       this.userUpdated.next(res);
     }));
   }
 
-  signup(name: string, password: string, email: string, phoneNumber: string) {
+  signup(username: string, password: string, email: string, phoneNumber: string) {
     const signupUrl = this.url + 'signup';
-    return this.http.post(signupUrl, {name, password, email, phoneNumber}, httpOptions).pipe(tap(res => {
+    return this.http.post(signupUrl, {username, password, email, phoneNumber}, httpOptions).pipe(tap(res => {
     }));
   }
 
@@ -53,8 +53,24 @@ export class UserService {
     return this.userUpdated.asObservable();
   }
 
+  setUserUpdateListener(user: any) {
+    this.userUpdated.next(user);
+  }
+
   getInitialUser(): Observable<any> {
     const userUrl = this.url + 'userstatus';
     return this.http.get(userUrl, httpOptions);
+  }
+
+  updateUserProfile(firstName: string, lastName: string, email: string, password: string,
+                    phoneNumber: string, subscribed: string, id: string) {
+    const updateUrl = this.url + 'userSelfUpdate/' + id;
+    console.log('firstname is ' + firstName);
+    console.log('lastname is ' + lastName);
+    console.log('email is ' + email);
+    console.log('phonenumber is ' + phoneNumber);
+    console.log('password is ' + password);
+    console.log('subscribed is ' + subscribed);
+    return this.http.patch(updateUrl, {firstName, lastName, password, email, phoneNumber, subscribed}, httpOptions);
   }
 }

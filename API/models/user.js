@@ -5,10 +5,18 @@ const validator = require('validator');
 const bcrypt = require('bcryptjs');
 
 const UserSchema = new mongoose.Schema({
-    name: {
+    username: {
         type: String, 
         required: true,
         unique: true},
+    firstName: {
+        type: String,
+        required: false,
+        default: null},
+    lastName: {
+        type: String,
+        required: false,
+        default: null},
     email: {
         type: String,
         required: true,
@@ -56,9 +64,9 @@ const UserSchema = new mongoose.Schema({
 });
 
 // this function find the user corresponds to the given username/password pairs 
-UserSchema.statics.findByNamePassword = function(name, password) {
+UserSchema.statics.findByUsernamePassword = function(username, password) {
     const User = this;
-    return User.findOne({name: name}).then((user) => {
+    return User.findOne({username: username}).then((user) => {
         if (!user) {
             return Promise.reject();
         }
