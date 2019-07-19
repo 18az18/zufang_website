@@ -84,7 +84,7 @@ UserSchema.statics.findByUsernamePassword = function(username, password) {
     })
 };
 
-UserSchema.statics.findSubscribedEmails = function(name, password) {
+UserSchema.statics.findSubscribedEmails = function() {
     const User = this;
     return User.find({subscribed: true}).then((users) => {
         if (!users) {

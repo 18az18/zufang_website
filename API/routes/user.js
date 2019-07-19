@@ -56,7 +56,7 @@ module.exports = function (app) {
                             subscribed: false,
                             role: user.role,
                             _id: user._id,
-                            name: user.name,
+                            username: user.username,
                             email: user.email,
                             phoneNumber: user.phoneNumber,
                         }
@@ -69,7 +69,7 @@ module.exports = function (app) {
                 if (error.code == 11000) {
                     res.status(400).send({
                         error: true,
-                        message: "Duplicate user name, please try another one."
+                        message: "Duplicate username, please try another one."
                     })
                     // handle invalid email address
                 } else if (error.errors && error.errors.email) {
@@ -129,8 +129,6 @@ module.exports = function (app) {
         (req, res) => {
             const username = req.body.username;
             const password = req.body.password;
-            console.log(username);
-            console.log(password);
             User.findByUsernamePassword(username, password).then((user) => {
                 if (!user) {
                     res.status(401).send({error:true, message: 'incorrect password or username'});
@@ -169,7 +167,7 @@ module.exports = function (app) {
         });
 
     // update user
-    // body:{name:" the specific username of the user", email/phonenumer/password/subscribed/firstName/lastName:"value to replace"}
+    // body:{email/phonenumer/password/subscribed/firstName/lastName:"value to replace"}
     app.patch('/userSelfUpdate/:id', authenticateSelfOrManager, (req, res) => {
         const id = req.params.id;
         if (!ObjectID.isValid(id)) {
@@ -277,7 +275,7 @@ module.exports = function (app) {
         }
     });
 
-    //{name:string, text:string, email:string}
+    //{username:string, text:string, email:string}
     app.post('/contactform', (req,res)=>{
         const mailOptions = {
             from: '', 
