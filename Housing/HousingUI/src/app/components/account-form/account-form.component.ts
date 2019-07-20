@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { FormService } from 'src/app/services/form/form.service';
 import { UserService } from 'src/app/services/user/user.service';
-import {take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-account-form',
@@ -38,6 +37,7 @@ export class AccountFormComponent implements OnInit {
     const email = this.accountForm.get('email').value;
     const phoneNumber = this.accountForm.get('phone').value;
     this.userService.updateUserProfile(firstName, lastName, email, null, phoneNumber, null, this.user.id).subscribe(res => {
+      console.log('successfully updated profile');
       this.showMsg = true;
       this.userMsg = 'You have successfully updated your profile info';
     });

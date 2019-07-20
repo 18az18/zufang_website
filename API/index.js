@@ -27,6 +27,8 @@ app.use(bodyParser.json({
     limit: '5mb'
 }));
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Add express sesssion middleware
 app.use(session({
     secret: 'LTJSB',
@@ -45,11 +47,14 @@ app.use(function (req, res, next) {
   next();
 });
 
-
 //routes
 require('./routes/user')(app);
 require('./routes/apartment')(app);
 require('./routes/announcement')(app);
+
+app.use(function(req, res) {
+    res.sendFile(path.join(__dirname, '/public', 'index.html'));
+});
 
 app.listen(port);
 
