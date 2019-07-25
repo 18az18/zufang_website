@@ -117,6 +117,24 @@ module.exports = function (app) {
         })
     })
 
+    // get all APT given type in url
+    app.get("/getAllOfType/:type", (req, res)=>{
+        apartment.find(
+            {type:req.params.type}
+        ).then((aptArray)=>{
+            res.status(200).send({
+                error: false,
+                apartments: aptArray.map( apt=>{return { id:apt.id, unitNumber: apt.unitNumber}})
+            })
+        }).catch((error)=>{
+            res.status(400).send({
+                error: true,
+                message: error
+            })
+        })
+    })
+
+
     // get all empty apartment given a floor, body:{floorNum: int, type: string}
     app.get("/EmptyApts/:floorNum/:type", (req, res)=>{
         apartment.find(
