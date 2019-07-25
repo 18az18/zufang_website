@@ -8,6 +8,7 @@ import { LoginComponent } from './components/pages/login/login.component';
 import { AccountComponent } from './components/pages/account/account.component';
 import { SignupComponent } from './components/pages/signup/signup.component';
 import { ProfileGuard } from './guards/profile/profile.guard';
+import { AdminComponent } from './components/pages/admin/admin.component';
 
 const routes: Routes = [
   { path: '', component: MainpageComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'roomlayout', component: RoomlayoutComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'account', component: AccountComponent, canActivate: [ProfileGuard]},
-  { path: 'signup', component: SignupComponent }
+  { path: 'signup', component: SignupComponent },
+  { path: 'admin', component: AdminComponent, canActivate: []}
 ];
 
 @NgModule({

@@ -43,5 +43,10 @@ export class RoomService {
     return this.http.get(typeUrl, httpOptions);
   }
 
+  getAllUnits(type: string): Observable<any> {
+    const unitUrl = this.url + 'getAllOfType/' + type;
+    return this.http.get(unitUrl, httpOptions);
+  }
+
 
 }

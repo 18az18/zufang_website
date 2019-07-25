@@ -1,0 +1,10 @@
+<app-admin-nav *ngFor='let type of types' [type]='type' (selected)='onSelect($event)'></app-admin-nav>
+<div *ngIf='selected'>
+  <form [formGroup]='adminForm' (ngSubmit)='onSubmit()'>
+    <p>Status:</p>
+    Rented <input type='radio' formControlName='rent' value='rented'>
+    Unrented <input type='radio' formControlName='rent' value='unrented'>
+    <button type='submit' [disabled]='!adminForm.valid'>Update info</button>
+  </form>
+
+</div>

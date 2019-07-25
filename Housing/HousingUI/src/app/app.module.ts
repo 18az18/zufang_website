@@ -26,6 +26,9 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { AccountHeaderComponent } from './components/account-header/account-header.component';
 import { AccountFormComponent } from './components/account-form/account-form.component';
 import { RoomDisplayComponent } from './components/room-display/room-display.component';
+import { AdminComponent } from './components/pages/admin/admin.component';
+import { AdminNavComponent } from './components/admin-nav/admin-nav.component';
+import { AdminNavItemComponent } from './components/admin-nav-item/admin-nav-item.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,10 @@ import { RoomDisplayComponent } from './components/room-display/room-display.com
     ContactusComponent,
     AccountHeaderComponent,
     AccountFormComponent,
-    RoomDisplayComponent
+    RoomDisplayComponent,
+    AdminComponent,
+    AdminNavComponent,
+    AdminNavItemComponent
   ],
   imports: [
     BrowserModule,
