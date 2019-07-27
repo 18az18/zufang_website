@@ -1,0 +1,18 @@
+
+.wrap{
+    width:900px;margin:0 auto;position: relative;display: flex;
+    /* background-color: red; */
+}
+.l-d{
+    width: 300px;position: relative;
+}
+.l-d button{
+    width: 200px;height:40px;border:1px solid rgba(235,235,235,0.5);
+    cursor: pointer;
+}
+.l-d button:hover{
+    background-color: rgb(126, 238, 118);transition:all 0.3s ease;
+}
+*:focus {
+    outline: none;
+}

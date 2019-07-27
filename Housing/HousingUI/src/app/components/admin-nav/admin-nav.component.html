@@ -1,8 +1,11 @@
-<div>
-  <button type='button' (click)='onClick()'>{{ type }}</button>
-  <div *ngIf='showDetail'>
-    <app-admin-nav-item *ngFor="let unitNumber of unitNumbers" [unitNumber]='unitNumber.unitNumber' (selected)='onSelect($event)'></app-admin-nav-item>
+<div class="wrap">
+  <div class="l-d">
+      <button type='button' (click)='onClick()'>{{ type }}</button>
+      <div *ngIf='showDetail'>
+        <app-admin-nav-item *ngFor="let unitNumber of unitNumbers" [unitNumber]='unitNumber.unitNumber' (selected)='onSelect($event)'></app-admin-nav-item>
+      </div>
   </div>
+
 
 </div>
 
