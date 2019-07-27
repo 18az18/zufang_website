@@ -8,3 +8,7 @@ button{
     margin-bottom: 100px; */
     width: 200px;height:40px;border:1px solid rgba(235,235,235,0.5);
 }
+button:hover{
+    background-color: rgb(126, 238, 118);
+    transition: all 0.3s ease;
+}

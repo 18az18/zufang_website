@@ -7,7 +7,7 @@
     width: 300px;position: relative;
 }
 .l-d button{
-    width: 200px;height:40px;border:1px solid rgba(235,235,235,0.5);
+    width: 200px;height:40px;border:1px solid rgb(235,235,235);
     cursor: pointer;
 }
 .l-d button:hover{

@@ -1,0 +1,43 @@
+form{
+    width: 500px;
+    /* background-color: red; */
+}
+
+form p{
+    color:white;font-size: 22px;
+    font-weight: 500;
+}
+form .type{
+    color:white;font-size: 18px;
+    font-weight: 400;
+    line-height: 25px;
+    margin-right: 10px;
+}
+
+form button{
+    width:200px;height:40px;
+    margin-top: 24px;
+    background-color: rgb(126, 238, 118);
+    cursor:pointer;color:white;
+    font-size: 18px;font-weight: 500;
+}
+
+form button:hover{
+    background-color: rgb(82, 155, 77);
+    transition: all 0.3s ease;
+}
+
+
+.wrap{
+    width:900px;margin:0 auto;position: relative;display: flex;
+    /* background-color: red; */
+    margin-top: 60px;
+    margin-bottom: 100px;
+}
+.l-d{
+    width: 300px;position: relative;
+    z-index: 1;
+}
+.r-d{
+    position: relative; z-index: 3;
+}
