@@ -13,18 +13,23 @@ export class LoginIconComponent implements OnInit, OnDestroy {
   loggedIn: boolean;
   loggedUser: any;
   private userSub: Subscription;
+  isAdmin: boolean;
 
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.getUserUpdateListener();
     this.getInitialUser();
+    this.isAdmin = false;
   }
 
   getUserUpdateListener() {
     this.userSub = this.userService.getUserUpdateListener()
       .subscribe((loggedIn) => {
         this.loggedIn = loggedIn;
+        if (loggedIn) {
+          this.isAdmin = loggedIn.role === 'admin' ? true : false;
+        }
       });
     // create service and call the get current user api request
     // change loggedIn boolean accordingly
@@ -34,7 +39,9 @@ export class LoginIconComponent implements OnInit, OnDestroy {
   getInitialUser() {
     this.userService.getInitialUser().subscribe(res => {
       this.loggedIn = res.user;
-      console.log(res);
+      if (res.user) {
+        this.isAdmin = res.user.role === 'admin' ? true : false;
+      }
       this.userService.setUserUpdateListener(res.user);
     }, err => {
       this.loggedIn = null;
@@ -51,7 +58,7 @@ export class LoginIconComponent implements OnInit, OnDestroy {
 
   logout() {
     this.userService.logout().subscribe(res => {
-      if (this.router.url === 'account') {
+      if (this.router.url === '/account' || this.router.url === '/admin') {
         this.router.navigate(['']);
       }
     });
@@ -59,6 +66,10 @@ export class LoginIconComponent implements OnInit, OnDestroy {
 
   checkProfile() {
     this.router.navigate(['/account']);
+  }
+
+  adminManagement() {
+    this.router.navigate(['/admin']);
   }
 
 }

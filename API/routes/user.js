@@ -137,7 +137,7 @@ module.exports = function (app) {
                         req.session.user = user._id;
                         console.log("user: " + req.session.user + " has logged in");
                         res.status(200).send({
-                            usertype: user.role,
+                            role: user.role,
                             username: user.username,
                             id: user._id,
                             email: user.email,

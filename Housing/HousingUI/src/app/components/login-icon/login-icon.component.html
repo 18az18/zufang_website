@@ -14,7 +14,8 @@
     <div ngbDropdown class="d-inline-block">
       <button class="btn btn-outline-primary greBtn" id="dropdownBasic1" ngbDropdownToggle>User</button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropDownWhole">
-        <button class="dropDownItem" ngbDropdownItem (click)="checkProfile()">My Account</button>
+        <button *ngIf='!isAdmin' class="dropDownItem" ngbDropdownItem (click)="checkProfile()">My Account</button>
+        <button *ngIf='isAdmin' class="dropDownItem" ngbDropdownItem (click)="adminManagement()">Admin Management</button>
         <hr>
         <button class="dropDownItem" ngbDropdownItem (click)="logout()">Log Out</button>
       </div>

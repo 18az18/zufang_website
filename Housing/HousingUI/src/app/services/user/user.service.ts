@@ -65,12 +65,12 @@ export class UserService {
   updateUserProfile(firstName: string, lastName: string, email: string, password: string,
                     phoneNumber: string, subscribed: string, id: string) {
     const updateUrl = this.url + 'userSelfUpdate/' + id;
-    console.log('firstname is ' + firstName);
-    console.log('lastname is ' + lastName);
-    console.log('email is ' + email);
-    console.log('phonenumber is ' + phoneNumber);
-    console.log('password is ' + password);
-    console.log('subscribed is ' + subscribed);
+    // console.log('firstname is ' + firstName);
+    // console.log('lastname is ' + lastName);
+    // console.log('email is ' + email);
+    // console.log('phonenumber is ' + phoneNumber);
+    // console.log('password is ' + password);
+    // console.log('subscribed is ' + subscribed);
     return this.http.patch(updateUrl, {firstName, lastName, password, email, phoneNumber, subscribed}, httpOptions);
   }
 }

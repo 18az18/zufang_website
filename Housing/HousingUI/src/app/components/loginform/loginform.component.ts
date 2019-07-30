@@ -27,8 +27,6 @@ export class LoginformComponent implements OnInit {
   onSubmit() {
     const username = this.loginForm.get('userName').value;
     const password = this.loginForm.get('password').value;
-    console.log('logging in with username: ' + username);
-    console.log('and password: ' + password);
     this.userService.login(username, password).subscribe(res => {
       console.log(res);
       this.router.navigate(['']);
