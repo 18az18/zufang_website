@@ -21,12 +21,10 @@ export class RoomService {
 
   constructor(private http: HttpClient) { }
 
-
-
-  // getApartmentTypes(): Observable<any> {
-  //   const typeUrl = this.url + 'getAvailableTypes/';
-  //   return this.http.get(typeUrl, httpOptions);
-  // }
+  getRoomRentStatus(unitNumber: string): Observable<any> {
+    const roomUrl = this.url + 'checkRentStatus/' + unitNumber;
+    return this.http.get(roomUrl, httpOptions);
+  }
 
   getAvailableFloors(type: string): Observable<any> {
     const floorUrl = this.url + 'getAvailableFloors/' + type;

@@ -39,9 +39,12 @@ export class AdminComponent implements OnInit {
   onSelect(selected: string) {
     console.log('in admin page' + selected);
     if (selected) {
-      // call api to get the corresponding room's status
-      this.selectedRoom = selected;
-      this.selected = true;
+      this.roomService.getRoomRentStatus(selected).subscribe(res => {
+        console.log('rent status:' + res);
+        this.rentStatus = res;
+        this.selectedRoom = selected;
+        this.selected = true;
+      });
     } else {
       this.selected = false;
     }
@@ -51,7 +54,11 @@ export class AdminComponent implements OnInit {
     // submit admin form through api request
     const rentedBy = this.adminForm.get('rent').value === 'rented' ? true : false;
     this.adminSerivce.updateRentStatus(this.selectedRoom, rentedBy).subscribe(res => {
-
+      this.showMsg = true;
+      this.message = 'updated successfully';
+    }, err => {
+      this.showMsg = true;
+      this.message = 'Server error, update failed';
     });
     return;
   }

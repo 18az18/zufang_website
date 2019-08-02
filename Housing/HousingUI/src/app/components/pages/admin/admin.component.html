@@ -12,9 +12,7 @@
           <span class="type">Unrented</span> <input type='radio' formControlName='rent' value='unrented'><br>
           <button type='submit' [disabled]='!adminForm.valid'>Update info</button>
         </form>
-
+        <p *ngIf='showMsg'>{{ message }}</p>
       </div>
-
-
   </div>
 </div>
