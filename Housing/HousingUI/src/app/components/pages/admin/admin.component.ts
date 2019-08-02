@@ -14,7 +14,6 @@ export class AdminComponent implements OnInit {
   types: string[];
   selected: boolean;
   adminForm: FormGroup;
-  rentStatus: string;
   selectedRoom: string;
   showMsg: boolean;
   message: string;
@@ -24,9 +23,8 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
     this.selectedRoom = null;
     this.showMsg = false;
-    this.rentStatus = '';
     this.adminForm = this.fb.group({
-      rent: [this.rentStatus, Validators.required]
+      rent: ['', Validators.required]
     });
 
     this.roomService.getAvailableTypes().subscribe(res => {
@@ -40,8 +38,9 @@ export class AdminComponent implements OnInit {
     console.log('in admin page' + selected);
     if (selected) {
       this.roomService.getRoomRentStatus(selected).subscribe(res => {
-        console.log('rent status:' + res);
-        this.rentStatus = res;
+        console.log('rent status:' + res.rentedBy);
+        const rentStatus = res.rentedBy ? 'rented' : 'unrented';
+        this.adminForm.get('rent').setValue(rentStatus);
         this.selectedRoom = selected;
         this.selected = true;
       });
