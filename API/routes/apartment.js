@@ -171,11 +171,18 @@ module.exports = function (app) {
 
     // update an APT
     app.put('/updateAPT/:unitNumber', authenticateManager, (req, res) => {
+        console.log(req.body);
         const unitNumber = req.params.unitNumber;
-        apartment.find({unitNumber: unitNumber}).then((result) => {
+        apartment.findOne({unitNumber: unitNumber}).then((result) => {
             if (!result) {
                 res.status(404).send();
             } else {
+                if (req.body.rentedBy === true){
+                    req.body.rentedBy = req.session.user
+                }
+                if (req.body.rentedBy === false){
+                    req.body.rentedBy = null
+                }
                 Object.assign(result, req.body);
                 result.save().then((result) => {
                     if (!result) {
@@ -189,6 +196,7 @@ module.exports = function (app) {
                 });
             }
         }).catch((error) => {
+            console.log(error);
             res.status(400).send(error);
         });
     });
@@ -200,7 +208,7 @@ module.exports = function (app) {
             if (!result) {
                 res.status(404).send({error: true, message:"unitNumber not found"});
             } else {
-                res.status(200).send({error: false, rentedBy: result.rentedBy});
+                res.status(200).send({error: false, rentedBy: result.rentedBy !== null});
             }
         }).catch((error) => {
             res.status(400).send(error);
