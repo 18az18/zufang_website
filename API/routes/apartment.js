@@ -172,9 +172,6 @@ module.exports = function (app) {
     // update an APT
     app.put('/updateAPT/:unitNumber', authenticateManager, (req, res) => {
         const unitNumber = req.params.unitNumber;
-        if (!ObjectID.isValid(id)) {
-            res.status(404).send();
-        }
         apartment.find({unitNumber: unitNumber}).then((result) => {
             if (!result) {
                 res.status(404).send();
@@ -190,6 +187,20 @@ module.exports = function (app) {
                     console.log(error);
                     return Promise.reject(error);
                 });
+            }
+        }).catch((error) => {
+            res.status(400).send(error);
+        });
+    });
+
+    // update an APT
+    app.get('/checkRentStatus/:unitNumber', authenticateManager, (req, res) => {
+        const unitNumber = req.params.unitNumber;
+        apartment.findOne({unitNumber: unitNumber}).then((result) => {
+            if (!result) {
+                res.status(404).send({error: true, message:"unitNumber not found"});
+            } else {
+                res.status(200).send({error: false, rentedBy: result.rentedBy});
             }
         }).catch((error) => {
             res.status(400).send(error);
