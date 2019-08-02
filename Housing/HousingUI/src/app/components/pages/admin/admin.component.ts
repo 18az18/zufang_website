@@ -14,13 +14,19 @@ export class AdminComponent implements OnInit {
   types: string[];
   selected: boolean;
   adminForm: FormGroup;
+  rentStatus: string;
+  selectedRoom: string;
+  showMsg: boolean;
+  message: string;
 
   constructor(private roomService: RoomService, private fb: FormBuilder, private adminSerivce: AdminService) { }
 
   ngOnInit() {
-
+    this.selectedRoom = null;
+    this.showMsg = false;
+    this.rentStatus = '';
     this.adminForm = this.fb.group({
-      rent: ['rented', Validators.required]
+      rent: [this.rentStatus, Validators.required]
     });
 
     this.roomService.getAvailableTypes().subscribe(res => {
@@ -34,6 +40,7 @@ export class AdminComponent implements OnInit {
     console.log('in admin page' + selected);
     if (selected) {
       // call api to get the corresponding room's status
+      this.selectedRoom = selected;
       this.selected = true;
     } else {
       this.selected = false;
@@ -42,6 +49,10 @@ export class AdminComponent implements OnInit {
 
   onSubmit() {
     // submit admin form through api request
+    const rentedBy = this.adminForm.get('rent').value === 'rented' ? true : false;
+    this.adminSerivce.updateRentStatus(this.selectedRoom, rentedBy).subscribe(res => {
+
+    });
     return;
   }
 

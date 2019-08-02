@@ -170,12 +170,12 @@ module.exports = function (app) {
     })
 
     // update an APT
-    app.put('/updateAPT/:id', authenticateManager, (req, res) => {
-        const id = req.params.id;
+    app.put('/updateAPT/:unitNumber', authenticateManager, (req, res) => {
+        const unitNumber = req.params.unitNumber;
         if (!ObjectID.isValid(id)) {
             res.status(404).send();
         }
-        apartment.findById(id).then((result) => {
+        apartment.find({unitNumber: unitNumber}).then((result) => {
             if (!result) {
                 res.status(404).send();
             } else {

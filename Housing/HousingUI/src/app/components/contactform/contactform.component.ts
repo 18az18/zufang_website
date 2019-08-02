@@ -24,10 +24,6 @@ export class ContactformComponent implements OnInit {
     });
   }
 
-  // onSubmit() {
-  //   this.formService.submitContactForm(this.contactForm.value.name, this.contactForm.value.email, this.contactForm.value.message).subscribe(res => );
-  // }
-
   onSubmit() {
     const name = this.contactForm.get('name').value;
     const email = this.contactForm.get('email').value;

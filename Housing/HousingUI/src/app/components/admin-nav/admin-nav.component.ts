@@ -25,10 +25,10 @@ export class AdminNavComponent implements OnInit {
     this.roomService.getAllUnits(this.type).subscribe(res => {
       console.log('unit numbers are:' + res);
       console.log(res);
-      //this.unitNumbers = res.apartments;
-      this.unitNumbers = [
-        {id: '1', unitNumber: '101'},
-        {id: '2', unitNumber: '102'}];
+      this.unitNumbers = res.apartments;
+      // this.unitNumbers = [
+      //   {id: '1', unitNumber: '101'},
+      //   {id: '2', unitNumber: '102'}];
     });
     this.showDetail = false;
   }

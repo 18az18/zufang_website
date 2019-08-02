@@ -7,14 +7,14 @@
   <div class="r-d">
       <div *ngIf='selected'>
         <form [formGroup]='adminForm' (ngSubmit)='onSubmit()'>
-          <p>Status:</p>
+          <p>Room: {{ selectedRoom }} Status:</p>
           <span class="type">Rented</span> <input type='radio' formControlName='rent' value='rented'><br>
           <span class="type">Unrented</span> <input type='radio' formControlName='rent' value='unrented'><br>
           <button type='submit' [disabled]='!adminForm.valid'>Update info</button>
         </form>
-      
+
       </div>
-    
+
 
   </div>
 </div>
