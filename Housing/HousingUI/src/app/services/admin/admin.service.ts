@@ -21,6 +21,6 @@ export class AdminService {
 
   updateRentStatus(unitNumber: string, rentedBy: boolean): Observable<any> {
     const updateUrl = this.url + 'updateAPT/' + unitNumber;
-    return this.http.put(updateUrl, rentedBy, httpOptions);
+    return this.http.put(updateUrl, {rentedBy}, httpOptions);
   }
 }
