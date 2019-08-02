@@ -40,8 +40,8 @@ export class AdminComponent implements OnInit {
     console.log('in admin page' + selected);
     if (selected) {
       this.roomService.getRoomRentStatus(selected).subscribe(res => {
-        console.log('rent status:' + res);
-        this.rentStatus = res;
+        console.log('rent status:' + res.rentedBy);
+        this.rentStatus = res.rentedBy ? 'rented' : 'unrented';
         this.selectedRoom = selected;
         this.selected = true;
       });
