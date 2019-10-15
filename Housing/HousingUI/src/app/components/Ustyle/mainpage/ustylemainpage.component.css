@@ -1,0 +1,154 @@
+
+.img-1{
+    background: #161616 url('../../../../assets/img/background.png') no-repeat;background-size: cover;
+    width:100%;height:1020px;position:absolute;top:0;left:0;
+    /* padding-top: 30px; */
+    background-attachment: fixed;
+    background-position: center 0;filter: brightness(70%);
+    -webkit-filter: brightness(70%);
+    display: block;background-position-y: -31.36px;
+   /* transform: translateZ(-.4px) scale(0.6) translateX(-104%) translateY(-40%) ;  e.g. */
+}
+
+
+
+
+.h{
+    width:100%;position:relative;
+    background-color: white;
+    height:574px;padding-top:100px;
+    /* background-color: red; */
+
+}
+.h .w {
+    width:900px;position: relative;margin:0 auto;display:flex;
+}
+.h .w .i{
+    width:410px;
+    /* background-color: #10E698; */
+}
+.h .w  p{
+    margin:0;color:#182D45;
+    animation-delay: 3s;
+    animation: fadeInUp 3s;
+    -moz-animation: fadeInUp 3s; /* Firefox */
+    -webkit-animation: fadeInUp 3s; /* Safari and Chrome */
+    -o-animation: fadeInUp 3s; /* Opera */
+}
+.h .w .i .p1{
+   color:#10E698;font-size:18px;
+}
+.h .w .i .p2{
+   font-size:45px;font-weight: 500;color:#2F4A69;
+}
+.h .w .i .p3{
+   font-size:15px;margin-top:30px;
+}
+.h .w .j{
+    margin-left:100px;padding-top:115px;
+    /* background-color: blue; */
+    /* display: flex; */
+}
+.h .w .j .j2{
+    margin-left:100px;padding-top:28px;
+}
+.h .w .j .p1{
+    color:#10E698;font-size:22px;
+}
+.h .w .j .p2{
+    font-size:15px;color:#182D45;margin-top:20px;
+}
+
+
+
+@keyframes fadeInUp {
+        from {
+            transform: translate3d(0,40px,0);
+            opacity: 0;
+        }
+        to {
+            transform: translate3d(0,0,0);
+            opacity: 1
+        }
+    }
+    @-moz-keyframes fadeInUp { /* Firefox */
+        from {
+            transform: translate3d(0,40px,0);
+            opacity: 0
+        }
+        to {
+            transform: translate3d(0,0,0);
+            opacity:1;
+        }
+    }
+    @-webkit-keyframes fadeInUp { /* Safari and Chrome */
+        from {
+            transform: translate3d(0,40px,0);
+            opacity: 0;
+        }
+        to {
+            transform: translate3d(0,0,0);
+            opacity:1;
+        }
+    }
+    @-o-keyframes fadeInUp { /* Opera */
+        from {
+            transform: translate3d(0,40px,0);
+            opacity: 0;
+        }
+        to {
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+    }
+
+
+
+.map{
+    background-color: white;min-width: 900px;
+}
+.map img{
+    width: 60%;margin-left: 20%;
+}
+.slider ul{
+    width: 100%;
+}
+.slider li{
+    width: 100%;
+}
+.slider img{
+    min-width: 100%;
+}
+
+
+
+.x{
+    width:100%;background-color: white;padding-top: 60px;padding-bottom: 100px;
+}
+.xw{
+    width:900px;margin:0 auto;display: flex;position: relative;
+}
+.x .ic{
+    width:160px;margin:0 !important;
+    height:auto;
+}
+.x .ic0{
+    margin-left: 63px;
+}
+.x .ic2{
+    margin-left: 282px;
+}
+.x div{
+    text-align:center;
+}
+.x h6{
+    font-size:18px;width:248px;text-align:center;
+    color:#182D45;font-weight: 400;
+}
+.x p{
+    font-size: 15px;width:248px;text-align:center;
+    color:#182D45;
+}
+.x .line{
+    position: absolute;top: 54px;left:114px;width:305px;
+}

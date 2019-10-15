@@ -31,10 +31,4 @@ export class FormService {
     return;
   }
 
-  submitProfileForm(): Observable<any> {
-    const profileUrl = this.url + '';
-    return ;
-  }
-
-
 }

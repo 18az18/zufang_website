@@ -3,42 +3,47 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/layout/header/header.component';
-import { FooterComponent } from './components/layout/footer/footer.component';
-import { ReservationComponent } from './components/pages/reservation/reservation.component';
-import { ContactComponent } from './components/pages/contact/contact.component';
-import { RoomlayoutComponent } from './components/pages/roomlayout/roomlayout.component';
-import { MainpageComponent } from './components/mainpage/mainpage.component';
-import { ContactformComponent } from './components/contactform/contactform.component';
-import { ReservationformComponent } from './components/reservationform/reservationform.component';
-import { LoginComponent } from './components/pages/login/login.component';
-import { LoginIconComponent } from './components/login-icon/login-icon.component';
-import { LoginformComponent } from './components/loginform/loginform.component';
-import { ContactformParagraphComponent } from './components/contactform-paragraph/contactform-paragraph.component';
-import { AccountComponent } from './components/pages/account/account.component';
-import { SignupComponent } from './components/pages/signup/signup.component';
-import { SignupFormComponent } from './components/signup-form/signup-form.component';
-import { PicRollerComponent } from './components/pic-roller/pic-roller.component';
-import { ContactusComponent } from './components/contactus/contactus.component';
-import { AccountHeaderComponent } from './components/account-header/account-header.component';
-import { AccountFormComponent } from './components/account-form/account-form.component';
-import { RoomDisplayComponent } from './components/room-display/room-display.component';
-import { AdminComponent } from './components/pages/admin/admin.component';
-import { AdminNavComponent } from './components/admin-nav/admin-nav.component';
-import { AdminNavItemComponent } from './components/admin-nav-item/admin-nav-item.component';
+import { HeaderComponent } from './components/Ustyle/layout/header/header.component';
+import { FooterComponent } from './components/Ustyle/layout/footer/footer.component';
+import { ReservationComponent } from './components/Ustyle/pages/reservation/reservation.component';
+import { ContactComponent } from './components/Ustyle/pages/contact/contact.component';
+import { RoomlayoutComponent } from './components/Ustyle/pages/roomlayout/roomlayout.component';
+import { UstylemainpageComponent } from './components/Ustyle/mainpage/Ustylemainpage';
+import { ContactformComponent } from './components/Ustyle/contactform/contactform.component';
+import { ReservationformComponent } from './components/Ustyle/reservationform/reservationform.component';
+import { LoginComponent } from './components/Ustyle/pages/login/login.component';
+import { LoginIconComponent } from './components/Ustyle/login-icon/login-icon.component';
+import { LoginformComponent } from './components/Ustyle/loginform/loginform.component';
+import { ContactformParagraphComponent } from './components/Ustyle/contactform-paragraph/contactform-paragraph.component';
+import { AccountComponent } from './components/Ustyle/pages/account/account.component';
+import { SignupComponent } from './components/Ustyle/pages/signup/signup.component';
+import { SignupFormComponent } from './components/Ustyle/signup-form/signup-form.component';
+import { PicRollerComponent } from './components/Ustyle/pic-roller/pic-roller.component';
+import { ContactusComponent } from './components/Ustyle/contactus/contactus.component';
+import { AccountHeaderComponent } from './components/Ustyle/account-header/account-header.component';
+import { AccountFormComponent } from './components/Ustyle/account-form/account-form.component';
+import { RoomDisplayComponent } from './components/Ustyle/room-display/room-display.component';
+import { AdminComponent } from './components/Ustyle/pages/admin/admin.component';
+import { AdminNavComponent } from './components/Ustyle/admin-nav/admin-nav.component';
+import { AdminNavItemComponent } from './components/Ustyle/admin-nav-item/admin-nav-item.component';
+import { MainpageComponent } from './components/KWTRANGL/mainpage/mainpage.component';
+import { AnnouncementComponent } from './components/KWTRANGL/pages/announcement/announcement.component';
+import { AnnouncementSectionComponent } from './components/KWTRANGL/announcement/announcement-section/announcement-section.component';
+import { IntroComponent } from './components/KWTRANGL/intro/intro.component';
+import { ProjectHeaderComponent } from './components/KWTRANGL/project-header/project-header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    MainpageComponent,
     HeaderComponent,
     FooterComponent,
     ReservationComponent,
     ContactComponent,
     RoomlayoutComponent,
-    MainpageComponent,
+    UstylemainpageComponent,
     ContactformComponent,
     ReservationformComponent,
     LoginComponent,
@@ -55,7 +60,11 @@ import { AdminNavItemComponent } from './components/admin-nav-item/admin-nav-ite
     RoomDisplayComponent,
     AdminComponent,
     AdminNavComponent,
-    AdminNavItemComponent
+    AdminNavItemComponent,
+    AnnouncementComponent,
+    AnnouncementSectionComponent,
+    IntroComponent,
+    ProjectHeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,14 @@ const {transporter} = require('./email');
 
 module.exports = function (app) {
 
+    app.get("/getAnnouncements", (req, res) => {
+        page = req.query.page
+        number = req.query.number
+        // get the most recent announcements base on page/number --> sort the announcements in
+        // decreasing time and get the most recent ones from index page x number to (page + 1) x number
+        
+    })
+
     app.post("/newAnnouncement", authenticateManager, (req, res)=>{
         const announce = new announcement(req.body.announcement)
         announce.save()
