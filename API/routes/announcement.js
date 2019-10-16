@@ -13,7 +13,6 @@ module.exports = function (app) {
         number = req.query.number
         // get the most recent announcements base on page/number --> sort the announcements in
         // decreasing time and get the most recent ones from index page x number to (page + 1) x number
-        
     })
 
     app.post("/newAnnouncement", authenticateManager, (req, res)=>{

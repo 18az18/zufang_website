@@ -1,3 +1,9 @@
-<p>
-  announcement-section works!
-</p>
+<div>
+  <h4>
+    ANNOUNCEMENT
+  </h4>
+  <app-s-announcement *ngFor="let announcement of announcements" [announcement]="announcement"></app-s-announcement>
+  <button type="button" (click)="readMore()">
+    Read More
+  </button>
+</div>

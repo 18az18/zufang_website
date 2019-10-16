@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -33,6 +33,9 @@ import { AnnouncementComponent } from './components/KWTRANGL/pages/announcement/
 import { AnnouncementSectionComponent } from './components/KWTRANGL/announcement/announcement-section/announcement-section.component';
 import { IntroComponent } from './components/KWTRANGL/intro/intro.component';
 import { ProjectHeaderComponent } from './components/KWTRANGL/project-header/project-header.component';
+import { PlateComponent } from './components/KWTRANGL/project-board/plate/plate.component';
+import { ProjectSectionComponent } from './components/KWTRANGL/project-board/project-section/project-section.component';
+import { SAnnouncementComponent } from './components/KWTRANGL/announcement/s-announcement/s-announcement.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +67,10 @@ import { ProjectHeaderComponent } from './components/KWTRANGL/project-header/pro
     AnnouncementComponent,
     AnnouncementSectionComponent,
     IntroComponent,
-    ProjectHeaderComponent
+    ProjectHeaderComponent,
+    PlateComponent,
+    ProjectSectionComponent,
+    SAnnouncementComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +79,9 @@ import { ProjectHeaderComponent } from './components/KWTRANGL/project-header/pro
     ReactiveFormsModule,
     NgbModule
   ],
-  providers: [],
+  providers: [
+    Title
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
