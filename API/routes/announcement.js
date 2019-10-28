@@ -9,10 +9,22 @@ const {transporter} = require('./email');
 module.exports = function (app) {
 
     app.get("/getAnnouncements", (req, res) => {
-        page = req.query.page
-        number = req.query.number
-        // get the most recent announcements base on page/number --> sort the announcements in
-        // decreasing time and get the most recent ones from index page x number to (page + 1) x number
+        let page = parseInt(req.query.page)
+        let number = parseInt( req.query.number)
+
+        announcement.find().sort({"time": -1 })
+        .then((announcements)=>{
+            res.status(200).send({
+                error: false,
+                announcements: announcements.slice(page*number, (page+1)*number)
+            })
+        })
+        .catch((error)=>{
+            res.status(400).send({
+                error: true,
+                message: error
+            })
+        })
     })
 
     app.post("/newAnnouncement", authenticateManager, (req, res)=>{
